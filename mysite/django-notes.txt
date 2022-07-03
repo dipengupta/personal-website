@@ -9,3 +9,5 @@ how to make a new proejct from scratch:
 
 2. Add bootstrap:
     I just downloaded the compiled files and copied them over here
+
+3. read this to know how to deploy on Heroku: https://realpython.com/django-hosting-on-heroku/#step-6-create-a-heroku-app
