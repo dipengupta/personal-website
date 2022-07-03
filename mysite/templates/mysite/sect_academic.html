@@ -1,0 +1,171 @@
+{% extends "mysite/header.html" %}
+
+
+{% block content %}
+{% load static %}
+
+<!-- This part is for the projects -->
+<span>
+<div>
+    <br>
+    <h1>I'm currently pursuing Masters in Computer Science from Pennsylvania State University. Here are some of my past projects.</h1>
+</div>
+
+<br>
+
+<!-- OS: ParallelPad -->
+<hr class="featurette-divider">
+<div class="row featurette mt-3">
+    <div class="col-md-7">
+        <h2 class="featurette-heading fw-normal lh-1">"ParallelPad" - The Straightforward Collaborative Text Editor<br><span class="text-muted"></span></h2>
+        <p class="lead mt-3">As part of our advanced operating systems class, we designed and developed a distributed collaborative text editor, with the twist that multiple people cannot edit on the same line.
+            <br><br>
+            Features: Designed and developed a custom ”Chain” datastructure based on our need, defined and implemented message semantics for the distributed environment. Edited file is saved on a local database, and crashes are handled.
+            <br><br>
+            Tech: Java Sockets, Distributed System Concepts, Java Swing.</p>
+    </div>
+
+    <div class="col-md-5 text-center">
+        <h4 class="text-muted">Jan '22 - May '22</h4>
+        <h5 class="text-muted"><a class="text-muted" href="https://github.com/dipengupta/COMP_512_ParallelPad">Project Link</a></h5>
+        <div class="container-fluid text-center mt-1">
+            <img class="img-fluid img-thumbnail center-block" src="{% static 'images/academic/ParallelPad.png' %}" alt="pp" height="450rem" width="450rem">
+        </div>
+    </div>
+
+</div>
+
+
+<!-- Escape Sequence Movie Reviews -->
+<hr class="featurette-divider">
+<div class="row featurette mt-3">
+    <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading fw-normal lh-1">Escape Sequence Movie Reviews <br><span class="text-muted"></span></h2>
+        <p class="lead mt-3">This movie-review website is a side-project of me and four of my close friends, where the idea is that movies are reviewed with 5 POVs. The 5 authors can separately login as admins, and type their review in a simple form, which will then be pushed to the SQL Database. The end user would simply browse through movies amongst the multiple pages, read their summaries, and then click on one of the 5 reviewer's reviews, and read the same. Additional features include customized lists, search capability, and being optimized for both desktop and mobile.
+            <br><br>
+            This was entirely built from scratch by me, with design and business ideas from others. It was a really good way to use topics I learnt in college (development frameworks, software project management, database design, HTML, CSS, JavaScript, software architecture (MVC here) etc)
+            <br><br>
+            It was a really enriching experience, where I learnt the value of proper communication and planning. This of course, is on hold for the moment, but I am really happy with the end-result.
+            <br><br>
+            Tech stack used: Python, Django, Bootstrap, mySQL, pythonanywhere (for hosting)</p>
+    </div>
+    <div class="col-md-5 text-center order-md-1">
+        <h4 class="text-muted">May '20 - Jul '20</h4>
+        <h5 class="text-muted"><a class="text-muted" href="https://dipengupta.pythonanywhere.com">Here is the website link.</a></h5>
+
+        <div class="container-fluid text-center mt-3">
+            <img class="img-fluid img-thumbnail center-block" src="{% static 'images/academic/EscapeSequence.png' %}" alt="breakup website" height="450rem" width="450rem">
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Multi Genre Music Classification and Conversion System -->
+<hr class="featurette-divider">
+<div class="row featurette mt-3">
+    <div class="col-md-7">
+        <h2 class="featurette-heading fw-normal lh-1">Multi Genre Music Classification and Conversion System<br><span class="text-muted"></span></h2>
+        <p class="lead mt-3">Artificial Intelligence (AI) has a huge scope in automating, stream- lining, and increasing productivity of Music Industry. Here, we look upon AI based techniques for classifying a piece of music into multiple genres and then later converting it into another user-specified genre. Plenty of work has been done in classification, but using traditional machine learning models which are limited in term of accuracy and rely heavily on features to train the model. The novelty of this work lies in its attempt to covert genre of music from one type to another. This paper focuses on classification achieved by using a model trained via Convolutional Neural Networks. Conversion of music genre, a relatively less worked upon field has been discussed in this paper along with details of implementation. For Conversion, we initially convert the input file to spectrogram. A database of all genre is maintained at all times and a random file from user selected genre is also converted to spectrogram. Later, these spectrograms are processed and converted back to signals. Finally the user can listen to the converted audio file. Validation of the conversion was performed via a survey with the help of end users. Thus, a novel idea of doing Music Genre Conversion was put forth and was validated with positive outcomes.</p>    
+    </div>
+
+    <div class="col-md-5 text-center">
+        <h4 class="text-semi-bold">Paper for this project got published in Feb '20</h4>
+        <h5 class="text-muted"><a class="text-muted" href="https://www.mecs-press.org/ijieeb/ijieeb-v12-n1/v12n1-4.html">Publication Link in MECS Hong Kong.</a></h5>
+
+        <div class="container-fluid text-center mt-3">
+            <img class="img-fluid img-thumbnail center-block" src="{% static 'images/academic/HighProjects.jpg' %}" alt="high projects" height="450rem" width="450rem">
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- this website -->
+<hr class="featurette-divider">
+<div class="row featurette mt-3">
+    <div class="colorder-md-2 text-center">
+        <h2 class="featurette-heading fw-normal lh-1">And lastly, to end the section, this website :) <br><span class="text-muted"></span></h2>
+    </div>
+</div>
+
+<!-- project part ends -->
+
+
+
+<!-- this part is for the past education -->
+<span>
+
+    <div>
+        <br><br>
+        <h1>Here is my educaitonal journey.</h1>
+    </div>
+
+
+    <!-- PSU -->
+    <hr class="featurette-divider">
+    <div class="row featurette mt-3">
+        <div class="col-md-7">
+            <h2 class="featurette-heading fw-normal lh-1">Pennsylvania State University - Penn State Harrisburg<br><span class="text-muted">MS in Computer Science</span></h2>
+            <p class="lead mt-3"></p>
+        </div>
+        <div class="col-md-5 text-center order-md-1">
+            <h4 class="text-muted">Aug '21 - Present</h4>
+            <h5 class="text-muted"><a class="text-muted" href="/"></a></h5>
+
+            <!-- <div class="container-fluid text-center mt-3">
+                <img class="img-fluid img-thumbnail center-block" src="{% static 'images/academic/EscapeSequence.png' %}" alt="breakup website" height="450rem" width="450rem">
+            </div> -->
+
+        </div>
+    </div>
+
+
+
+    <!-- KJSCE -->
+    <hr class="featurette-divider">
+    <div class="row featurette mt-3">
+        <div class="col-md-7">
+            <h2 class="featurette-heading fw-normal lh-1">KJSCE, Mumbai<br><span class="text-muted">B.Tech in Information Technology</span></h2>
+            <p class="lead mt-3"></p>
+        </div>
+        <div class="col-md-5 text-center order-md-1">
+            <h4 class="text-muted">Aug '15 - May '19</h4>
+            <h5 class="text-muted"><a class="text-muted" href="/"></a></h5>
+
+            <!-- <div class="container-fluid text-center mt-3">
+                <img class="img-fluid img-thumbnail center-block" src="{% static 'images/academic/EscapeSequence.png' %}" alt="breakup website" height="450rem" width="450rem">
+            </div> -->
+
+        </div>
+    </div>
+
+
+
+    <!-- KV -->
+    <hr class="featurette-divider">
+    <div class="row featurette mt-3">
+        <div class="col-md-7">
+            <h2 class="featurette-heading fw-normal lh-1">KV IIT Powai, Mumbai<br><span class="text-muted">Schooling</span></h2>
+            <p class="lead mt-3"></p>
+        </div>
+        <div class="col-md-5 text-center order-md-1">
+            <h4 class="text-muted">Jan '03 - Mar '15</h4>
+            <h5 class="text-muted"><a class="text-muted" href="/"></a></h5>
+
+            <!-- <div class="container-fluid text-center mt-3">
+                <img class="img-fluid img-thumbnail center-block" src="{% static 'images/academic/EscapeSequence.png' %}" alt="breakup website" height="450rem" width="450rem">
+            </div> -->
+
+        </div>
+    </div>
+
+
+
+
+</span>
+<!-- past education part ends -->
+
+
+{% endblock %}

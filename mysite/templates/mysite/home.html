@@ -1,0 +1,61 @@
+{% extends "mysite/header.html" %}
+
+
+{% block content %}
+{% load static %}
+
+<span>
+
+    <!-- Landing Text -->
+
+    <!-- this div is for all devices except small screen ones -->
+    <div class="jumbotron d-none d-md-block d-lg-block d-xl-block">
+        
+        <div class="row">
+            <div class="col">
+                <h2 class="display-4 font-weight-bold">Hi, I'm Dipen.</h2>
+                <br>
+                <div class="container-fluid">
+                    <img class="img-fluid img-thumbnail" src="{% static 'images/main.jpeg' %}" alt="dipen" height="750rem" width="750rem">
+                </div>
+            </div> 
+    
+            <div class="col">
+                <br><br>
+                <h2 class="display-6 font-weight-bold mt-5">I'm a software developer, musician and a grad student.</h2>
+                <br><br>
+
+                <div class="jumbotron d-none d-md-block d-lg-block d-xl-block">
+                    <h2 class="display-7">Explore around this site to know more about me!</h2>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- this div is only for small screen and xs screens -->
+    <div class="jumbotron d-xs-block d-sm-block d-md-none justify-content-center mx-2">
+
+        <h2 class="display-4 font-weight-bold">Hi, I'm Dipen.</h2>
+        <div class="container-fluid text-center mt-1">
+            <img class="img-fluid img-thumbnail center-block" src="{% static 'images/main.jpeg' %}" alt="dipen" height="275rem" width="275rem">
+        </div>
+        <br>
+        <h2 class="display-6 font-weight-bold">I'm a software developer, musician and a grad student.</h2>
+        <br>
+    </div>
+
+    <div class="jumbotron d-xs-block d-sm-block d-md-none mx-2">
+        <h2 class="display-7">Explore around this site to know more about me!</h2>
+    </div>
+
+
+    <!-- End of Landing Text -->
+
+</span>
+
+
+
+{% endblock %}	
