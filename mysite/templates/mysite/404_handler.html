@@ -1,0 +1,51 @@
+{% extends "mysite/header.html" %}
+
+
+{% block content %}
+{% load static %}
+
+<span>
+
+    <!-- Landing Text -->
+
+    <!-- this div is for all devices except small screen ones -->
+    <div class="jumbotron d-none d-md-block d-lg-block d-xl-block">
+        
+        <div class="row">
+            <div class="col">
+                <h2 class="display-4 font-weight-bold">That URL does not seem to be right!</h2>
+                <br>
+                <div class="container-fluid">
+                    <img class="img-fluid img-thumbnail" src="{% static 'images/doof_temp.jpeg' %}" alt="doof" height="1000rem" width="1000rem">
+                </div>
+            </div> 
+    
+            <div class="col">
+                <br><br>
+                <h2 class="display-6 font-weight-bold mt-5">Click <a class="text-muted" href = "{%url 'home-page' %}">here</a> to go to the main page</h2>
+                <br><br>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- this div is only for small screen and xs screens -->
+    <div class="jumbotron d-xs-block d-sm-block d-md-none justify-content-center mx-2">
+
+        <h2 class="display-4 font-weight-bold">That URL does not seem to be right!</h2>
+        <div class="container-fluid text-center mt-1">
+            <img class="img-fluid img-thumbnail center-block" src="{% static 'images/doof_temp.jpeg' %}" alt="doof" height="275rem" width="275rem">
+        </div>
+        <br>
+        <h2 class="display-6 font-weight-bold">Click <a class="text-muted" href = "{%url 'home-page' %}">here</a> to go to the main page</h2>
+        <br>
+    </div>
+
+    <!-- End of Landing Text -->
+
+</span>
+
+
+
+{% endblock %}	

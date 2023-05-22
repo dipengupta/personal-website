@@ -20,3 +20,6 @@ def displayMusicPage(request):
 
 def displayContactPage(request):
     return render(request, 'mysite/sect_contact.html')
+
+def handlerView404(request):
+    return render(request, 'mysite/404_handler.html')

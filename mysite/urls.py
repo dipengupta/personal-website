@@ -11,5 +11,6 @@ urlpatterns = [
 	re_path(r'academic/', views.displayAcademicPage, name='academic-page'),
 	re_path(r'music/', views.displayMusicPage, name='music-page'),
 	re_path(r'contact/', views.displayContactPage, name='contact-page'),
-
+	re_path(r'.*/', views.handlerView404, name='404-page'),
 ]
+
