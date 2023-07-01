@@ -23,5 +23,5 @@ Open issues:
     -> need to get the buttons out of the carousel on big screens 
 
 Future Enhancements:
-    -> maybe add more pictures?# personal-site-heroku
-# personal-site-heroku
+    -> maybe add more pictures?
+
