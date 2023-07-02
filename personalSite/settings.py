@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-z^153y2g@x2_y!_!+a$2^8nt%t=ry$wtw421z5n$(a&+@$ivjn
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','localhost','.vercel.app']
+ALLOWED_HOSTS = ['127.0.0.1','localhost','.vercel.app','.now.sh']
 
 
 # Application definition
@@ -134,6 +134,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+#adding for Vercel
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 
 
 
