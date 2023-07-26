@@ -24,3 +24,8 @@ Open issues:
 
 Future Enhancements:
     -> maybe add more pictures?
+
+
+========================================================================================================================
+
+NOTE: This is the base website, ought to work perfectly on local.
