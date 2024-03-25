@@ -6,282 +6,363 @@
 
 <div>
     <br>
-    <h2>I've loved music for as long as I can remember, and have been playing the guitar since 2009. Here are the guitars I have collected over the years.</h2>
+    <h2>I've loved music for as long as I can remember. Here are the guitars I have collected over the years.</h2>
 </div>
 
 
-<!-- note: to add more, make sure that the img dimensions are 1024x1024
-(preview -> tools -> edit size -> 1024x1024) -->
-
-<!-- carousel for the guitars -->
-<div id="myCarousel" class="carousel slide border rounded" data-bs-ride="carousel">
+<!-- all devices except small screen ones - guitar carousel starts-->
+<span class="d-none d-md-block d-lg-block d-xl-block"> 
     
-    <div class="carousel-inner">
+    <div id="largeScreenCarousel" class="carousel slide rounded row" data-bs-ride="carousel" style="width: 100%; height: 100%; max-width: 500rem; max-height: 500rem;">
+    
+    <!-- for left arrow -->
+    <div class="col-2"></div>
+
+    <div class="carousel-inner col">
         
 
         <!-- 1_Hobmer -->
-        <div class="carousel-item text-center active">
-
-            <!-- this div is for all devices except small screen ones -->
-            <span class="d-none d-md-block d-lg-block d-xl-block">    
-                <div class="row align-items-center">
-                    <div class="col-1"></div>
-                    <div class="col">
-                        <img class="img-fluid img-rounded center-block" src="{% static 'images/music/1_Hobmer.png' %}" alt="g1" height="450rem" width="450rem">
-                    </div>
-                    <div class="col">
-                        <p>The Homber, my first ever guitar!</p>
-                        <p class="text-muted">(2009)</p>
-                    </div>
-                    <div class="col-1"></div>
+        <div class="carousel-item text-center">
+            <div class="row align-items-center">
+                <div class="col">
+                    <img class="img-fluid img-rounded center-block" src="{% static 'images/music/1_Hobmer.jpg' %}">
                 </div>
-            </span>
-
-
-            <!-- this div is only for small screen and xs screens -->
-            <span class="d-xs-block d-sm-block d-md-none">
-                <div class="row">
-                    <img class="img-fluid img-rounded center-block" src="{% static 'images/music/1_Hobmer.png' %}" alt="g1" height="450rem" width="450rem">
-                </div>
-                <div class="row">
+                <div class="col-1"></div>
+                <div class="col">
                     <p>The Homber, my first ever guitar!</p>
+                    <br>
                     <p class="text-muted">(2009)</p>
                 </div>
-            </span>
-
+            </div> 
         </div>
 		
 
         <!-- 2_Ibanez -->
         <div class="carousel-item text-center">
-
-            <!-- this div is for all devices except small screen ones -->
-            <span class="d-none d-md-block d-lg-block d-xl-block">    
-                <div class="row align-items-center">
-                    <div class="col">
-                        <p>Ibanez SA220FM, the first electric guitar.</p>
-                        <p class="text-muted">(2010)</p>
-                    </div>
-                    <div class="col">
-                        <img class="img-fluid img-rounded center-block" src="{% static 'images/music/2_Ibanez.jpg' %}" alt="pp" height="450rem" width="450rem">
-                    </div>
-                </div>
-            </span>
-
-
-            <!-- this div is only for small screen and xs screens -->
-            <span class="d-xs-block d-sm-block d-md-none">
-                <div class="row">
-                    <img class="img-fluid img-rounded center-block" src="{% static 'images/music/2_Ibanez.jpg' %}" alt="g1" height="450rem" width="450rem">
-                </div>
-                <div class="row">
+            <div class="row align-items-center">
+                <div class="col">
                     <p>Ibanez SA220FM, the first electric guitar.</p>
+                    <br>
                     <p class="text-muted">(2010)</p>
                 </div>
-            </span>
-
+                <div class="col-1"></div>
+                <div class="col">
+                    <img class="img-fluid img-rounded center-block" src="{% static 'images/music/2_Ibanez.jpg' %}">
+                </div>
+            </div>  
         </div>
     
 
         <!-- 3_Goldtop -->
         <div class="carousel-item text-center">
-
-            <!-- this div is for all devices except small screen ones -->
-            <span class="d-none d-md-block d-lg-block d-xl-block">    
-                <div class="row align-items-center">
-                    <div class="col">
-                        <img class="img-fluid img-rounded center-block" src="{% static 'images/music/3_Goldtop.jpeg' %}" alt="g1" height="450rem" width="450rem">
-                    </div>
-                    <div class="col">
-                        <p>The Epiphpne Les Paul Standard, Goldtop. Was a dream come true for me back then!</p>
-                        <p class="text-muted">(2016)</p>
-                    </div>
+            <div class="row align-items-center">
+                <div class="col">
+                    <img class="img-fluid img-rounded center-block" src="{% static 'images/music/3_Goldtop.jpeg' %}">
                 </div>
-            </span>
-
-
-            <!-- this div is only for small screen and xs screens -->
-            <span class="d-xs-block d-sm-block d-md-none">
-                <div class="row">
-                    <img class="img-fluid img-rounded center-block" src="{% static 'images/music/3_Goldtop.jpeg' %}" alt="g1" height="450rem" width="450rem">
-                </div>
-                <div class="row">
-                    <p>The Epiphpne Les Paul Standard, Goldtop. Was a dream come true for me back then!</p>
+                <div class="col-1"></div>
+                <div class="col">
+                    <p>The Epiphone Les Paul Standard, Goldtop. Was a dream come true for me back then!</p>
+                    <br>
                     <p class="text-muted">(2016)</p>
                 </div>
-            </span>
-
+            </div>  
         </div>
 
 
         <!-- 4_Jazz -->
         <div class="carousel-item text-center">
-
-            <!-- this div is for all devices except small screen ones -->
-            <span class="d-none d-md-block d-lg-block d-xl-block">    
-                <div class="row align-items-center">
-                    <div class="col">
-                        <p>Fender Squire Jazz V Bass, played it throughout my undergrad.</p>
-                        <p class="text-muted">(2016)</p>
-                    </div>
-                    <div class="col">
-                        <img class="img-fluid img-rounded center-block" src="{% static 'images/music/4_Jazz.jpeg' %}" alt="pp" height="650rem" width="650rem">
-                    </div>
-                </div>
-            </span>
-
-
-            <!-- this div is only for small screen and xs screens -->
-            <span class="d-xs-block d-sm-block d-md-none">
-                <div class="row">
-                    <img class="img-fluid img-rounded center-block" src="{% static 'images/music/4_Jazz.jpeg' %}" alt="g1" height="450rem" width="450rem">
-                </div>
-                <div class="row">
-                    <p>Fender Squire Jazz V Bass, played it throughout my undergrad.</p>
+            <div class="row align-items-center">
+                <div class="col">
+                    <p>Fender Squier Jazz V Bass, played it throughout my undergrad.</p>
+                    <br>
                     <p class="text-muted">(2016)</p>
                 </div>
-            </span>
-
+                <div class="col-1"></div>
+                <div class="col">
+                    <img class="img-fluid img-rounded center-block" src="{% static 'images/music/4_Jazz.jpeg' %}">
+                </div>
+            </div>  
         </div>
 
 
         <!-- 5_Uke -->
         <div class="carousel-item text-center">
-
-            <!-- this div is for all devices except small screen ones -->
-            <span class="d-none d-md-block d-lg-block d-xl-block">    
-                <div class="row align-items-center">
-                    <div class="col">
-                        <img class="img-fluid img-rounded center-block" src="{% static 'images/music/5_Uke.jpeg' %}" alt="g1" height="450rem" width="450rem">
-                    </div>
-                    <div class="col">
-                        <p>Soprano Ukulele, this was something I got on a whim from Amazon</p>
-                        <p class="text-muted">(2018)</p>
-                    </div>
+            <div class="row align-items-center">
+                <div class="col">
+                    <img class="img-fluid img-rounded center-block" src="{% static 'images/music/5_Uke.jpeg' %}">
                 </div>
-            </span>
-
-
-            <!-- this div is only for small screen and xs screens -->
-            <span class="d-xs-block d-sm-block d-md-none">
-                <div class="row">
-                    <img class="img-fluid img-rounded center-block" src="{% static 'images/music/5_Uke.jpeg' %}" alt="g1" height="450rem" width="450rem">
-                </div>
-                <div class="row">
+                <div class="col-1"></div>
+                <div class="col">
                     <p>Soprano Ukulele, this was something I got on a whim from Amazon</p>
+                    <br>
                     <p class="text-muted">(2018)</p>
                 </div>
-            </span>
-
+            </div>  
         </div>
 
 
         <!-- 6_Tele -->
         <div class="carousel-item text-center">
-
-            <!-- this div is for all devices except small screen ones -->
-            <span class="d-none d-md-block d-lg-block d-xl-block">    
-                <div class="row align-items-center">
-                    <div class="col">
-                        <p>Fender Player Series Telecaster, I saved up for months during my first job to get this. Really opened up a lot of avenues.</p>
-                        <p class="text-muted">(2019)</p>
-                    </div>
-                    <div class="col">
-                        <img class="img-fluid img-rounded center-block" src="{% static 'images/music/6_Tele.jpeg' %}" alt="pp" height="450rem" width="450rem">
-                    </div>
-                </div>
-            </span>
-
-
-            <!-- this div is only for small screen and xs screens -->
-            <span class="d-xs-block d-sm-block d-md-none">
-                <div class="row">
-                    <img class="img-fluid img-rounded center-block" src="{% static 'images/music/6_Tele.jpeg' %}" alt="g1" height="450rem" width="450rem">
-                </div>
-                <div class="row">
+            <div class="row align-items-center">
+                <div class="col">
                     <p>Fender Player Series Telecaster, I saved up for months during my first job to get this. Really opened up a lot of avenues.</p>
+                    <br>
                     <p class="text-muted">(2019)</p>
                 </div>
-            </span>
-
+                <div class="col-1"></div>
+                <div class="col">
+                    <img class="img-fluid img-rounded center-block" src="{% static 'images/music/6_Tele.jpeg' %}">
+                </div>
+            </div>  
         </div>
 
 
         <!-- 7_Martin -->
         <div class="carousel-item text-center">
-
-            <!-- this div is for all devices except small screen ones -->
-            <span class="d-none d-md-block d-lg-block d-xl-block">    
-                <div class="row align-items-center">
-                    <div class="col">
-                        <img class="img-fluid img-rounded center-block" src="{% static 'images/music/7_Martin.jpeg' %}" alt="g1" height="450rem" width="450rem">
-                    </div>
-                    <div class="col">
-                        <p>Martin Custom X Series Acoustic Dreadnought, has to be my first proper acoustic. Got a great deal on this!</p>
-                        <p class="text-muted">(2022)</p>
-                    </div>
+            <div class="row align-items-center">
+                <div class="col">
+                    <img class="img-fluid img-rounded center-block" src="{% static 'images/music/7_Martin.jpeg' %}">
                 </div>
-            </span>
-
-
-            <!-- this div is only for small screen and xs screens -->
-            <span class="d-xs-block d-sm-block d-md-none">
-                <div class="row">
-                    <img class="img-fluid img-rounded center-block" src="{% static 'images/music/7_Martin.jpeg' %}" alt="g1" height="450rem" width="450rem">
-                </div>
-                <div class="row">
+                <div class="col-1"></div>
+                <div class="col">
                     <p>Martin Custom X Series Acoustic Dreadnought, has to be my first proper acoustic. Got a great deal on this!</p>
+                    <br>
                     <p class="text-muted">(2022)</p>
                 </div>
-            </span>
-
+            </div>  
         </div>
 
 
         <!-- 8_Stingray -->
         <div class="carousel-item text-center">
-
-            <!-- this div is for all devices except small screen ones -->
-            <span class="d-none d-md-block d-lg-block d-xl-block">    
-                <div class="row align-items-center">
-                    <div class="col">
-                        <p>Music Man Sterling StingRay 5</p>
-                        <p class="text-muted">(2022)</p>
-                    </div>
-                    <div class="col">
-                        <img class="img-fluid img-rounded center-block" src="{% static 'images/music/8_Stingray.jpeg' %}" alt="pp" height="450rem" width="450rem">
-                    </div>
-                </div>
-            </span>
-
-
-            <!-- this div is only for small screen and xs screens -->
-            <span class="d-xs-block d-sm-block d-md-none">
-                <div class="row">
-                    <img class="img-fluid img-rounded center-block" src="{% static 'images/music/8_Stingray.jpeg' %}" alt="g1" height="450rem" width="450rem">
-                </div>
-                <div class="row">
+            <div class="row align-items-center">
+                <div class="col">
                     <p>Music Man Sterling StingRay 5</p>
+                    <br>
                     <p class="text-muted">(2022)</p>
                 </div>
-            </span>
-
+                <div class="col-1"></div>
+                <div class="col">
+                    <img class="img-fluid img-rounded center-block" src="{% static 'images/music/8_Stingray.jpeg' %}">
+                </div>
+            </div>  
         </div>
 
 
-    </div>
 
-    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+        <!-- 9_PRS -->
+        <div class="carousel-item text-center active">
+            <div class="row align-items-center">
+                <div class="col">
+                    <img class="img-fluid img-rounded center-block" src="{% static 'images/music/9_PRS.jpg' %}">
+                </div>
+                <div class="col-1"></div>
+                <div class="col">
+                    <p>PRS SE Paul's Guitar. Had my eye on this ever since I came to the states. Got it for my graduation!</p>
+                    <br>
+                    <p class="text-muted">(2023)</p>
+                </div>
+            </div>  
+        </div>
+
+    </div>
+    
+    <!-- for right arrow -->
+    <div class="col-2"></div>
+
+
+    <button class="carousel-control-prev" style="filter: invert(100%);" type="button" data-bs-target="#largeScreenCarousel" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
     </button>
 
-    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+    <button class="carousel-control-next" style="filter: invert(100%);" type="button" data-bs-target="#largeScreenCarousel" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
     </button>
 </div>
-<!-- guitar carousel ends -->
+</span>
+<!-- all devices except small screen ones - guitar carousel ends-->
+
+
+<!-- small screen and xs screens - guitar carousel starts -->
+<span class="d-xs-block d-sm-block d-md-none">
+
+<div id="smallScreenCarousel" class="carousel slide" data-bs-ride="carousel" style="width: 100%; height: 100%;">
+    
+    <div class="carousel-inner">
+        
+        <!-- 1_Hobmer -->
+        <div class="carousel-item text-center">
+            <span>
+                <div class="row">
+                    <p class="text-muted" style="font-size: 22px;">(2009)</p>
+                </div>
+                <div class="row border">
+                    <img class="img-fluid img-rounded center-block" src="{% static 'images/music/1_Hobmer.jpg' %}">
+                </div>
+                <br>
+                <div class="row">
+                    <p>The Homber, my first ever guitar!</p>
+                </div>
+            </span>
+        </div>
+		
+
+        <!-- 2_Ibanez -->
+        <div class="carousel-item text-center">
+            <span>
+                <div class="row">
+                    <p class="text-muted" style="font-size: 22px;">(2010)</p>
+                </div>
+                <div class="row border">
+                    <img class="img-fluid img-rounded center-block" src="{% static 'images/music/2_Ibanez.jpg' %}">
+                </div>
+                <br>
+                <div class="row">
+                    <p>Ibanez SA220FM, the first electric guitar.</p>
+                </div>
+            </span>
+        </div>
+    
+
+        <!-- 3_Goldtop -->
+        <div class="carousel-item text-center">
+            <span>
+                <div class="row">
+                    <p class="text-muted" style="font-size: 22px;">(2016)</p>
+                </div>
+                <div class="row border">
+                    <img class="img-fluid img-rounded center-block" src="{% static 'images/music/3_Goldtop.jpeg' %}">
+                </div>
+                <br>
+                <div class="row">
+                    <p>The Epiphone Les Paul Standard, Goldtop. Was a dream come true for me back then!</p>
+                </div>
+            </span>
+        </div>
+
+
+        <!-- 4_Jazz -->
+        <div class="carousel-item text-center">
+            <span>
+                <div class="row">
+                    <p class="text-muted" style="font-size: 22px;">(2016)</p>
+                </div>
+                <div class="row border">
+                    <img class="img-fluid img-rounded center-block" src="{% static 'images/music/4_Jazz.jpeg' %}">
+                </div>
+                <br>
+                <div class="row">
+                    <p>Fender Squier Jazz V Bass, played it throughout my undergrad.</p>
+                </div>
+            </span>
+        </div>
+
+
+        <!-- 5_Uke -->
+        <div class="carousel-item text-center">
+            <span>
+                <div class="row">
+                    <p class="text-muted" style="font-size: 22px;">(2018)</p>
+                </div>
+                <div class="row border">
+                    <img class="img-fluid img-rounded center-block" src="{% static 'images/music/5_Uke.jpeg' %}">
+                </div>
+                <br>
+                <div class="row">
+                    <p>Soprano Ukulele, this was something I got on a whim from Amazon</p>
+                </div>
+            </span>
+        </div>
+
+
+        <!-- 6_Tele -->
+        <div class="carousel-item text-center">
+            <span>
+                <div class="row">
+                    <p class="text-muted" style="font-size: 22px;">(2019)</p>
+                </div>
+                <div class="row border">
+                    <img class="img-fluid img-rounded center-block" src="{% static 'images/music/6_Tele.jpeg' %}">
+                </div>
+                <br>
+                <div class="row">
+                    <p>Fender Player Series Telecaster, I saved up for months during my first job to get this. Really opened up a lot of avenues.</p>
+                </div>
+            </span>
+        </div>
+
+
+        <!-- 7_Martin -->
+        <div class="carousel-item text-center">
+            <span>
+                <div class="row">
+                    <p class="text-muted" style="font-size: 22px;">(2022)</p>
+                </div>
+                <div class="row border">
+                    <img class="img-fluid img-rounded center-block" src="{% static 'images/music/7_Martin.jpeg' %}">
+                </div>
+                <br>
+                <div class="row">
+                    <p>Martin Custom X Series Acoustic Dreadnought, has to be my first proper acoustic. Got a great deal on this!</p>
+                </div>
+            </span>
+        </div>
+
+
+        <!-- 8_Stingray -->
+        <div class="carousel-item text-center">
+            <span>
+                <div class="row">
+                    <p class="text-muted" style="font-size: 22px;">(2022)</p>
+                </div>
+                <div class="row border">
+                    <img class="img-fluid img-rounded center-block" src="{% static 'images/music/8_Stingray.jpeg' %}">
+                </div>
+                <br>
+                <div class="row">
+                    <p>Music Man Sterling StingRay 5</p>
+                </div>
+            </span>
+        </div>
+
+
+
+        <!-- 9_PRS -->
+        <div class="carousel-item text-center active">
+            <span>
+                <div class="row">
+                    <p class="text-muted" style="font-size: 22px;">(2023)</p>
+                </div>
+                <div class="row border">
+                    <img class="img-fluid img-rounded center-block" src="{% static 'images/music/9_PRS.jpg' %}">
+                </div>
+                <br>
+                <div class="row">
+                    <p>PRS SE Paul's Guitar. Had my eye on this ever since I came to the states. Got it for my graduation!</p>
+                </div>
+            </span>
+        </div>
+
+
+    </div>
+    
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#smallScreenCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+
+    <button class="carousel-control-next" type="button" data-bs-target="#smallScreenCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+</span>
+<!-- small screen and xs screens - guitar carousel ends -->
+
 
 
 
@@ -295,12 +376,12 @@
 <div class="row featurette mt-3">
     <div class="col-md-7">
         <h2 class="featurette-heading fw-normal lh-1">Instagram: UGG Chronicles<br><span class="text-muted"></span></h2>
-        <p class="lead mt-3">So, I have a series on Instgram called "Upping Guitar Game" (UGG) Chronicles, which is just a collection of clips of me practising.</p>
+        <p class="lead mt-3">I have a series on Instagram called "Upping Guitar Game" (UGG) Chronicles, which is just a collection of clips of me practising.</p>
     </div>
 
     <div class="col-md-5 text-center">
         <div class="container-fluid text-center mt-1">
-            <a class="text-muted" href="https://www.instagram.com/dipengupta/reels/?hl=en"><img class="img-fluid img-thumbnail center-block" src="{% static 'images/music/UGG-2.jpeg' %}" alt="pp" height="300rem" width="300rem"></a>
+            <a class="text-muted" href="https://www.instagram.com/dipengupta/reels/?hl=en"><img class="img-fluid img-thumbnail center-block" src="{% static 'images/music/2024_insta.PNG' %}" alt="pp" height="300rem" width="300rem"></a>
         </div>
         <h5 class="text-muted"><a class="text-muted" href="https://www.instagram.com/dipengupta/reels/?hl=en">Link to my insta page</a></h5>
     </div>
@@ -313,12 +394,12 @@
 <div class="row featurette mt-3">
     <div class="col-md-7 order-md-2">
         <h2 class="featurette-heading fw-normal lh-1">YouTube Channel<br><span class="text-muted"></span></h2>
-        <p class="lead mt-3">So, I have been uploading guitar videos to YouTube since ~2010, and to me, it's a nice place to keep an archive of my playing. It's not what it used to be, but in any case it's always nice to revisit the old videos.</p>
+        <p class="lead mt-3">I have been uploading guitar videos to YouTube since ~2010, and to me, it's a nice place to keep an archive of my playing. It's not what it used to be, but in any case it's always nice to revisit the old videos.</p>
     </div>
     <div class="col-md-5 text-center order-md-1">
 
         <div class="container-fluid text-center mt-3">
-            <a class="text-muted" href="https://www.youtube.com/user/buffalo4321able"><img class="img-fluid img-thumbnail center-block" src="{% static 'images/music/youtube.png' %}" alt="breakup website" height="450rem" width="450rem"></a>
+            <a class="text-muted" href="https://www.youtube.com/user/buffalo4321able"><img class="img-fluid img-thumbnail center-block" src="{% static 'images/music/2024_youtube.png' %}" alt="breakup website" height="450rem" width="450rem"></a>
         </div>
         <h5 class="text-muted"><a class="text-muted" href="https://www.youtube.com/user/buffalo4321able">Link to my channel</a></h5>
 
@@ -331,7 +412,7 @@
 <div class="row featurette mt-3">
     <div class="col-md-7">
         <h2 class="featurette-heading fw-normal lh-1">Soundcloud - "The Side Project"<br><span class="text-muted"></span></h2>
-        <p class="lead mt-3">So, this came from me and two seniors jamming back in 2012-2014. </p>
+        <p class="lead mt-3">This came from me and two seniors jamming back in 2012-2014. </p>
     </div>
 
     <div class="col-md-5 text-center">
@@ -357,7 +438,7 @@
     <div class="col-md-5 text-center order-md-1">
 
         <div class="container-fluid text-center mt-3">
-            <img class="img-fluid img-thumbnail center-block" src="{% static 'images/music/oct.png' %}" alt="breakup website" height="450rem" width="450rem">
+            <img class="img-fluid img-thumbnail center-block" src="{% static 'images/music/Octavium.jpg' %}" alt="breakup website" height="450rem" width="450rem">
         </div>
 
     </div>
