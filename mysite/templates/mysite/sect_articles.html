@@ -1,0 +1,164 @@
+{% extends "mysite/header.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center my-4">My Articles</h1>
+    <p class="text-muted text-center">
+        Writing has always been carthartic for me, and here are things which I have written about (with a lot of blood, sweat and tears.. nothing here was AI-generated)
+    </p>
+    <p class="text-muted text-center">
+        I have saved the text from these articles in case they are ever taken down or the links break. 
+        You can view the full text of the articles by clicking the respective "Saved Text" link.
+    </p>
+    <ul class="list-group">
+        <!-- Large screens -->
+        <span class="d-none d-md-block d-lg-block d-xl-block">
+            <li class="list-group-item d-flex align-items-center justify-content-between">
+                <div class="flex-grow-1">
+                    <a href="https://dipengupta.substack.com/p/pumping-lemma-follow-up" 
+                       class="text-decoration-none" target="_blank">
+                        <strong>Pumping lemma follow-up</strong>
+                    </a>
+                </div>
+                <div class="d-flex gap-2">
+                    <a href="https://dipengupta.substack.com/p/pumping-lemma-follow-up" 
+                       class="badge bg-primary text-white" target="_blank">Source</a>
+                    <a href="{% url 'article-detail' 'article5' %}" class="badge bg-info text-white">Saved Text</a>
+                    <span class="badge bg-success text-white">Published Dec '24</span>
+                </div>
+            </li>
+            <li class="list-group-item d-flex align-items-center justify-content-between">
+                <div class="flex-grow-1">
+                    <a href="https://dipengupta.substack.com/p/keeping-up-with-ai" 
+                       class="text-decoration-none" target="_blank">
+                        <strong>Keeping up with AI</strong>
+                    </a>
+                </div>
+                <div class="d-flex gap-2">
+                    <a href="https://dipengupta.substack.com/p/keeping-up-with-ai" 
+                       class="badge bg-primary text-white" target="_blank">Source</a>
+                    <a href="{% url 'article-detail' 'article4' %}" class="badge bg-info text-white">Saved Text</a>
+                    <span class="badge bg-success text-white">Published Oct '24</span>
+                </div>
+            </li>
+            <li class="list-group-item d-flex align-items-center justify-content-between">
+                <div class="flex-grow-1">
+                    <a href="https://medium.com/@escapesequencemovies/the-parallelisms-between-pumping-lemma-and-life-ff70bbd06fbf" 
+                       class="text-decoration-none" target="_blank">
+                        <strong>The parallelisms between pumping lemma and life</strong>
+                    </a>
+                </div>
+                <div class="d-flex gap-2">
+                    <a href="https://medium.com/@escapesequencemovies/the-parallelisms-between-pumping-lemma-and-life-ff70bbd06fbf" 
+                       class="badge bg-primary text-white" target="_blank">Source</a>
+                    <a href="{% url 'article-detail' 'article3' %}" class="badge bg-info text-white">Saved Text</a>
+                    <span class="badge bg-success text-white">Published May '24</span>
+                </div>
+            </li>
+            <li class="list-group-item d-flex align-items-center justify-content-between">
+                <div class="flex-grow-1">
+                    <a href="https://medium.com/@escapesequencemovies/masters-journey-in-the-us-as-an-international-student-a047765f5b3e" 
+                       class="text-decoration-none" target="_blank">
+                        <strong>Master’s Journey in the US as an International Student</strong>
+                    </a>
+                </div>
+                <div class="d-flex gap-2">
+                    <a href="https://medium.com/@escapesequencemovies/masters-journey-in-the-us-as-an-international-student-a047765f5b3e" 
+                       class="badge bg-primary text-white" target="_blank">Source</a>
+                    <a href="{% url 'article-detail' 'article2' %}" class="badge bg-info text-white">Saved Text</a>
+                    <span class="badge bg-success text-white">Published Aug '23</span>
+                </div>
+            </li>
+            <li class="list-group-item d-flex align-items-center justify-content-between">
+                <div class="flex-grow-1">
+                    <a href="https://medium.com/@escapesequencemovies/a-case-for-doing-masters-in-computer-science-at-penn-state-harrisburg-82a1e4f12ef1" 
+                       class="text-decoration-none" target="_blank">
+                        <strong>A case for doing Master’s in Computer Science at Penn State Harrisburg</strong>
+                    </a>
+                </div>
+                <div class="d-flex gap-2">
+                    <a href="https://medium.com/@escapesequencemovies/a-case-for-doing-masters-in-computer-science-at-penn-state-harrisburg-82a1e4f12ef1" 
+                       class="badge bg-primary text-white" target="_blank">Source</a>
+                    <a href="{% url 'article-detail' 'article1' %}" class="badge bg-info text-white">Saved Text</a>
+                    <span class="badge bg-success text-white">Published Nov '22</span>
+                </div>
+            </li>
+        </span>
+
+        <!-- Small screens -->
+        <span class="d-xs-block d-sm-block d-md-none">
+            <li class="list-group-item">
+                <div>
+                    <a href="https://dipengupta.substack.com/p/pumping-lemma-follow-up" 
+                       class="text-decoration-none d-block mb-2" target="_blank">
+                        <strong>Pumping lemma follow-up</strong>
+                    </a>
+                </div>
+                <div class="d-flex gap-2 flex-wrap">
+                    <a href="https://dipengupta.substack.com/p/pumping-lemma-follow-up" 
+                       class="badge bg-primary text-white" target="_blank">Source</a>
+                    <a href="{% url 'article-detail' 'article5' %}" class="badge bg-info text-white">Saved Text</a>
+                    <span class="badge bg-success text-white">Published Dec '24</span>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div>
+                    <a href="https://dipengupta.substack.com/p/keeping-up-with-ai" 
+                       class="text-decoration-none d-block mb-2" target="_blank">
+                        <strong>Keeping up with AI</strong>
+                    </a>
+                </div>
+                <div class="d-flex gap-2 flex-wrap">
+                    <a href="https://dipengupta.substack.com/p/keeping-up-with-ai" 
+                       class="badge bg-primary text-white" target="_blank">Source</a>
+                    <a href="{% url 'article-detail' 'article4' %}" class="badge bg-info text-white">Saved Text</a>
+                    <span class="badge bg-success text-white">Published Oct '24</span>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div>
+                    <a href="https://medium.com/@escapesequencemovies/the-parallelisms-between-pumping-lemma-and-life-ff70bbd06fbf" 
+                       class="text-decoration-none d-block mb-2" target="_blank">
+                        <strong>The parallelisms between pumping lemma and life</strong>
+                    </a>
+                </div>
+                <div class="d-flex gap-2 flex-wrap">
+                    <a href="https://medium.com/@escapesequencemovies/the-parallelisms-between-pumping-lemma-and-life-ff70bbd06fbf" 
+                       class="badge bg-primary text-white" target="_blank">Source</a>
+                    <a href="{% url 'article-detail' 'article3' %}" class="badge bg-info text-white">Saved Text</a>
+                    <span class="badge bg-success text-white">Published May '24</span>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div>
+                    <a href="https://medium.com/@escapesequencemovies/masters-journey-in-the-us-as-an-international-student-a047765f5b3e" 
+                       class="text-decoration-none d-block mb-2" target="_blank">
+                        <strong>Master’s Journey in the US as an International Student</strong>
+                    </a>
+                </div>
+                <div class="d-flex gap-2 flex-wrap">
+                    <a href="https://medium.com/@escapesequencemovies/masters-journey-in-the-us-as-an-international-student-a047765f5b3e" 
+                       class="badge bg-primary text-white" target="_blank">Source</a>
+                    <a href="{% url 'article-detail' 'article2' %}" class="badge bg-info text-white">Saved Text</a>
+                    <span class="badge bg-success text-white">Published Aug '23</span>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div>
+                    <a href="https://medium.com/@escapesequencemovies/a-case-for-doing-masters-in-computer-science-at-penn-state-harrisburg-82a1e4f12ef1" 
+                       class="text-decoration-none d-block mb-2" target="_blank">
+                        <strong>A case for doing Master’s in Computer Science at Penn State Harrisburg</strong>
+                    </a>
+                </div>
+                <div class="d-flex gap-2 flex-wrap">
+                    <a href="https://medium.com/@escapesequencemovies/a-case-for-doing-masters-in-computer-science-at-penn-state-harrisburg-82a1e4f12ef1" 
+                       class="badge bg-primary text-white" target="_blank">Source</a>
+                    <a href="{% url 'article-detail' 'article1' %}" class="badge bg-info text-white">Saved Text</a>
+                    <span class="badge bg-success text-white">Published Nov '22</span>
+                </div>
+            </li>
+        </span>
+
+    </ul>
+</div>
+{% endblock %}

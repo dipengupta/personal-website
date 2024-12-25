@@ -18,6 +18,15 @@ def displayAcademicPage(request):
 def displayMusicPage(request):
     return render(request, 'mysite/sect_music.html')
 
+def displayArticlesPage(request):
+    return render(request, 'mysite/sect_articles.html')
+
+def displayArticleDetail(request, article_name):
+    try:
+        return render(request, f'mysite/../articles/{article_name}.html')
+    except TemplateDoesNotExist:
+        raise Http404("Article not found.")
+
 def displayContactPage(request):
 
     concerts_seen = {
