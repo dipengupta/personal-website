@@ -3,15 +3,38 @@
 {% block content %}
 {% load static %}
 
-<div class="contact-section">
-    <br>
-    <h2>Contact Me</h2>
-    <p>If you'd like to get in touch, feel free to reach out to me at:</p>
-    <ul class="contact-list">
-        <li><a href="mailto:dipenrgupta@gmail.com">dipenrgupta@gmail.com</a></li>
-        <li><a href="mailto:dipenrgupta@icloud.com">dipenrgupta@icloud.com</a></li>
-    </ul>
+    
+    <!-- Large screens -->
+<span class="d-none d-md-block d-lg-block d-xl-block">
+<div class="contact-section row">
+    <div class="col-6">
+        <br>
+        <h2>Contact Me</h2>
+        <p>If you'd like to get in touch, feel free to reach out to me at:</p>
+        <ul class="contact-list">
+            <li><a href="mailto:dipenrgupta@gmail.com">dipenrgupta@gmail.com</a></li>
+            <li><a href="mailto:dipenrgupta@icloud.com">dipenrgupta@icloud.com</a></li>
+        </ul>
+    </div>
+    <div class="col-6">
+{#        insert checkboxland#}
+    </div>
 </div>
+</span>
+
+        <!-- Small screens -->
+<span class="d-xs-block d-sm-block d-md-none">
+<div class="contact-section">
+        <br>
+        <h2>Contact Me</h2>
+        <p>If you'd like to get in touch, feel free to reach out to me at:</p>
+        <ul class="contact-list">
+            <li><a href="mailto:dipenrgupta@gmail.com">dipenrgupta@gmail.com</a></li>
+            <li><a href="mailto:dipenrgupta@icloud.com">dipenrgupta@icloud.com</a></li>
+        </ul>
+</div>
+</span>
+    
 
 <hr>
 
