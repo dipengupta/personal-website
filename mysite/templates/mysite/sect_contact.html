@@ -2,7 +2,35 @@
 
 {% block content %}
 {% load static %}
+    
+    
+<script type="module">
+  // pulls in the library from unpkg and exposes it globally
+  import { Checkboxland } from 'https://unpkg.com/checkboxland?module';
+  window.Checkboxland = Checkboxland;
+  
+  const cbl = new Checkboxland({
+    selector: '#clock-container',
+    dimensions: '44x17',    // wide enough for HH:MM:SS
+    fillValue: 0          // start all boxes unchecked
+  });
 
+  function updateClock() {
+    const now = new Date();
+    const h = String(now.getHours()).padStart(2,'0');
+    const m = String(now.getMinutes()).padStart(2,'0');
+    const s = String(now.getSeconds()).padStart(2,'0');
+    const timestr = `${h}:${m}:${s}`;
+
+    cbl.clearData();               // wipe old time
+    cbl.print(timestr, { x:5, y:5 });  // draw new time at (0,0)
+  }
+
+  // tick every second
+  setInterval(updateClock, 1000);
+  updateClock();
+</script>
+    
     
     <!-- Large screens -->
 <span class="d-none d-md-block d-lg-block d-xl-block">
@@ -16,8 +44,9 @@
             <li><a href="mailto:dipenrgupta@icloud.com">dipenrgupta@icloud.com</a></li>
         </ul>
     </div>
+    <!-- our clock will go here -->
     <div class="col-6">
-{#        insert checkboxland#}
+      <div id="clock-container"></div>
     </div>
 </div>
 </span>
@@ -33,6 +62,7 @@
             <li><a href="mailto:dipenrgupta@icloud.com">dipenrgupta@icloud.com</a></li>
         </ul>
 </div>
+{#    <div id="clock-container" style="width:50ch; height:7ch;"></div>#}
 </span>
     
 
@@ -168,14 +198,5 @@
     }
 </style>
 
-<script>
-    // JavaScript to add interactivity for expanding/collapsing concert lists
-    document.querySelectorAll('.year-title').forEach(function(yearTitle) {
-        yearTitle.addEventListener('click', function() {
-            const ul = this.nextElementSibling;
-            ul.style.display = ul.style.display === 'none' ? 'block' : 'none';
-        });
-    });
-</script>
-
+    
 {% endblock %}
