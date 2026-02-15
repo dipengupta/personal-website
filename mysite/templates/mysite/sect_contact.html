@@ -2,201 +2,342 @@
 
 {% block content %}
 {% load static %}
-    
-    
-<script type="module">
-  // pulls in the library from unpkg and exposes it globally
-  import { Checkboxland } from 'https://unpkg.com/checkboxland?module';
-  window.Checkboxland = Checkboxland;
-  
-  const cbl = new Checkboxland({
-    selector: '#clock-container',
-    dimensions: '44x17',    // wide enough for HH:MM:SS
-    fillValue: 0          // start all boxes unchecked
-  });
-
-  function updateClock() {
-    const now = new Date();
-    const h = String(now.getHours()).padStart(2,'0');
-    const m = String(now.getMinutes()).padStart(2,'0');
-    const s = String(now.getSeconds()).padStart(2,'0');
-    const timestr = `${h}:${m}:${s}`;
-
-    cbl.clearData();               // wipe old time
-    cbl.print(timestr, { x:5, y:5 });  // draw new time at (0,0)
-  }
-
-  // tick every second
-  setInterval(updateClock, 1000);
-  updateClock();
-</script>
-    
-    
-    <!-- Large screens -->
-<span class="d-none d-md-block d-lg-block d-xl-block">
-<div class="contact-section row">
-    <div class="col-6">
-        <br>
-        <h2>Contact Me</h2>
-        <p>If you'd like to get in touch, feel free to reach out to me at:</p>
-        <ul class="contact-list">
-            <li><a href="mailto:dipenrgupta@gmail.com">dipenrgupta@gmail.com</a></li>
-            <li><a href="mailto:dipenrgupta@icloud.com">dipenrgupta@icloud.com</a></li>
-        </ul>
-    </div>
-    <!-- our clock will go here -->
-    <div class="col-6">
-      <div id="clock-container"></div>
-    </div>
-</div>
-</span>
-
-        <!-- Small screens -->
-<span class="d-xs-block d-sm-block d-md-none">
-<div class="contact-section">
-        <br>
-        <h2>Contact Me</h2>
-        <p>If you'd like to get in touch, feel free to reach out to me at:</p>
-        <ul class="contact-list">
-            <li><a href="mailto:dipenrgupta@gmail.com">dipenrgupta@gmail.com</a></li>
-            <li><a href="mailto:dipenrgupta@icloud.com">dipenrgupta@icloud.com</a></li>
-        </ul>
-</div>
-{#    <div id="clock-container" style="width:50ch; height:7ch;"></div>#}
-</span>
-    
-
-<hr>
-
-<div class="collections-section">
-    <h3>Concerts I've Seen</h3>
-    <p>Here are some of the concerts and events I've attended over the years:</p>
-
-    <div class="timeline">
-        <div class="timeline-grid">
-            {% for year, concerts in collections.items %}
-            <div class="timeline-item">
-                <h3 class="year-title">{{ year }}:</h3>
-                <ul class="concert-list">
-                    {% for concert in concerts %}
-                    <li>{{ concert }}</li>
-                    {% endfor %}
+<div class="goofy-page container py-3 py-md-4">
+    <section class="goofy-card goofy-hero">
+        <div class="row g-4 align-items-start">
+            <div class="col-lg-7">
+                <h2 class="goofy-title">Contact Me</h2>
+                <p class="goofy-copy">Quickest way to reach me:</p>
+                <ul class="contact-list">
+                    <li><a href="mailto:dipenrgupta@gmail.com">dipenrgupta@gmail.com</a></li>
+                    <li><a href="mailto:dipenrgupta@icloud.com">dipenrgupta@icloud.com</a></li>
                 </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="goofy-card goofy-section goofy-tweets">
+        <h3 class="goofy-subtitle">Random Tweets</h3>
+{#        <p class="goofy-copy">Fresh picks from <a href="https://x.com/{{ tweet_username }}" target="_blank" rel="noopener noreferrer">@{{ tweet_username }}</a> on each refresh.</p>#}
+        {% if tweet_notice %}
+        <p class="goofy-notice">{{ tweet_notice }}</p>
+        {% endif %}
+
+        {% if tweets %}
+        <div id="random-tweets" class="goofy-grid goofy-grid-tweets">
+            {% for tweet in tweets %}
+            <div class="goofy-panel tweet-embed">
+                <blockquote class="twitter-tweet" data-dnt="true">
+                    <a href="https://twitter.com/{{ tweet_username }}/status/{{ tweet.id }}" target="_blank" rel="noopener noreferrer">
+                        View tweet {{ forloop.counter }}
+                    </a>
+                </blockquote>
             </div>
             {% endfor %}
         </div>
-    </div>
-</div>
+        <script>
+            (function () {
+                function hydrateTweetEmbeds() {
+                    if (window.twttr && window.twttr.widgets) {
+                        var container = document.getElementById('random-tweets');
+                        window.twttr.widgets.load(container);
+                    }
+                }
 
-<hr>
+                if (window.twttr && window.twttr.widgets) {
+                    hydrateTweetEmbeds();
+                    return;
+                }
 
-<div class="wifi-section">
-    <h3>Amusing Wi-Fi Names</h3>
-    <div class="wifi-grid">
-        <div>Martin Router King</div>
-        <div>Tell_my_wifi_love_her</div>
-        <div>It_hurts_when_IP</div>
-        <div>The_LAN_before_time</div>
-        <div>House LANister</div>
-        <div>Winternet Is Coming</div>
-        <div>TitanicSyncing</div>
-        <div>Wi-Fight the Inevitable</div>
-        <div>Safe Levels of Radiation</div>
-        <div>Panic at the Cisco</div>
-        <div>For Whom the Belkin Tolls</div>
-        <div>You Shall Not Password</div>
-        <div>Lord of the Ping</div>
-        <div>That’s What She SSID</div>
-        <div>Skynet</div>
-        <div>Accio Internet</div>
-        <div>Dumbledore's IT Staff</div>
-        <div>I’m Not A Witch I’m Your Wifi</div>
-        <div>Never gonna give you wifi</div>
-        <div>Do Re Mi Fa So La Wi Fi</div>
-        <div>Routy McRouterface</div>
-        <div>LAN Halen</div>
-        <div>SpiderLAN</div>
-        <div>Lord Voldemodem</div>
-        <div>Wu-Tang LAN</div>
-    </div>
+                var script = document.createElement('script');
+                script.async = true;
+                script.src = 'https://platform.twitter.com/widgets.js';
+                script.charset = 'utf-8';
+                script.onload = hydrateTweetEmbeds;
+                document.body.appendChild(script);
+            })();
+        </script>
+        {% else %}
+        <p class="goofy-copy">Showing the live timeline while the random tweet cache refreshes.</p>
+        <div class="goofy-panel tweet-fallback">
+            <a class="twitter-timeline"
+               data-height="540"
+               data-dnt="true"
+               href="https://twitter.com/{{ tweet_username }}?ref_src=twsrc%5Etfw">
+                Tweets by @{{ tweet_username }}
+            </a>
+        </div>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        {% if tweet_error %}
+        <p class="goofy-error">Debug: {{ tweet_error }}</p>
+        {% endif %}
+        {% endif %}
+    </section>
+
+    <section class="goofy-card goofy-section goofy-concerts">
+        <h3 class="goofy-subtitle">Concerts I've Seen</h3>
+        <p class="goofy-copy">Some of the concerts and events I’ve attended over the years.</p>
+
+        <div class="concert-rows">
+            {% for year, concerts in collections.items %}
+            <article class="concert-row">
+                <h4 class="concert-year">{{ year }}</h4>
+                <p class="concert-items">
+                    {% for concert in concerts %}
+                    <span class="concert-item">{{ concert }}</span>{% if not forloop.last %}<span class="concert-sep"> • </span>{% endif %}
+                    {% endfor %}
+                </p>
+            </article>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="goofy-card goofy-section goofy-wifi">
+        <h3 class="goofy-subtitle">Amusing Wi-Fi Names</h3>
+        <ul class="wifi-columns">
+            <li>Martin Router King</li>
+            <li>Tell_my_wifi_love_her</li>
+            <li>It_hurts_when_IP</li>
+            <li>The_LAN_before_time</li>
+            <li>House LANister</li>
+            <li>Winternet Is Coming</li>
+            <li>TitanicSyncing</li>
+            <li>Wi-Fight the Inevitable</li>
+            <li>Safe Levels of Radiation</li>
+            <li>Panic at the Cisco</li>
+            <li>For Whom the Belkin Tolls</li>
+            <li>You Shall Not Password</li>
+            <li>Lord of the Ping</li>
+            <li>That’s What She SSID</li>
+            <li>Skynet</li>
+            <li>Accio Internet</li>
+            <li>Dumbledore's IT Staff</li>
+            <li>I’m Not A Witch I’m Your Wifi</li>
+            <li>Never gonna give you wifi</li>
+            <li>Do Re Mi Fa So La Wi Fi</li>
+            <li>Routy McRouterface</li>
+            <li>LAN Halen</li>
+            <li>SpiderLAN</li>
+            <li>Lord Voldemodem</li>
+            <li>Wu-Tang LAN</li>
+        </ul>
+    </section>
 </div>
 
 <style>
-    .contact-section {
-        margin-bottom: 40px;
+    .goofy-page {
+        --goofy-ink: #25313d;
+        --goofy-link: #0f4c81;
+        --goofy-card-bg: #ffffff;
+        --goofy-border: #d8e0ea;
+        --goofy-radius: 4px;
+        --goofy-gap: 1rem;
+        color: var(--goofy-ink);
+        display: grid;
+        gap: var(--goofy-gap);
+        padding: 0;
+    }
+
+    .goofy-card {
+        background: var(--goofy-card-bg);
+        border: 1px solid var(--goofy-border);
+        border-radius: var(--goofy-radius);
+        box-shadow: none;
+        padding: 1rem 1rem 1.1rem;
+    }
+
+    .goofy-hero {
+        background: #fff;
+    }
+
+    .goofy-section {
+        position: relative;
+    }
+
+    .goofy-tweets {
+        background: #fff;
+    }
+
+    .goofy-concerts {
+        background: #fff;
+    }
+
+    .goofy-wifi {
+        background: #fff;
+    }
+
+    .goofy-title,
+    .goofy-subtitle {
+        color: var(--goofy-ink);
+        {#font-family: "Trebuchet MS", "Gill Sans", sans-serif;#}
+        font-weight: 700;
+        margin-bottom: 0.55rem;
+    }
+
+    .goofy-title {
+        font-size: clamp(1.6rem, 2.3vw, 2rem);
+    }
+
+    .goofy-subtitle {
+        font-size: clamp(1.25rem, 1.8vw, 1.5rem);
+    }
+
+    .goofy-copy {
+        color: #47586a;
+        margin-bottom: 0.75rem;
+    }
+
+    .goofy-error {
+        color: #7d1f1f;
+        font-size: 0.92rem;
+        margin: 0;
+    }
+
+    .goofy-notice {
+        color: #6e5a15;
+        font-size: 0.92rem;
+        margin: -0.2rem 0 0.6rem;
+    }
+
+    .goofy-note {
+        background: #f7f9fc;
+        border: 1px solid #dce3ec;
+        border-radius: 4px;
+        padding: 0.8rem 0.9rem;
+    }
+
+    .goofy-note p {
+        color: #57697c;
+        margin: 0.4rem 0 0;
+    }
+
+    .contact-list {
+        margin: 0;
+        padding-left: 1.1rem;
     }
 
     .contact-list li {
-        font-size: 1.2em;
+        margin-bottom: 0.45rem;
     }
 
-    .collections-section {
-        padding: 20px;
-        {#background-color: #f9f9f9;#}
-        background-color: #f3e8ff;
-        border-radius: 8px;
-    }
-
-    .timeline {
-        padding-left: 0;
-        margin-top: 20px;
-    }
-
-    .timeline-grid {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-    }
-
-    .timeline-item {
-        flex: 1 1 calc(33.333% - 20px);
-        background-color: #fff;
-        padding: 15px;
-        border-radius: 8px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .wifi-section {
-        padding: 20px;
-        background-color: #eaf7ff;
-        border-radius: 8px;
-    }
-
-    .wifi-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 15px;
-        padding: 10px;
-    }
-
-    .wifi-grid div {
-        background-color: #fff;
-        border: 1px solid #ddd;
-        padding: 10px;
-        border-radius: 5px;
-        text-align: center;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    h2, h3 {
-        font-family: 'Arial', sans-serif;
-        color: #333;
-    }
-
-    ul {
-        list-style-type: disc;
-        margin-left: 20px;
-    }
-
-    a {
+    .goofy-page a {
+        color: var(--goofy-link);
         text-decoration: none;
-        color: #007bff;
     }
 
-    a:hover {
+    .goofy-page a:hover {
         text-decoration: underline;
+    }
+
+    .goofy-grid {
+        display: grid;
+        gap: 0.75rem;
+        margin-top: 0.75rem;
+    }
+
+    .goofy-grid-tweets {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .goofy-panel {
+        background: #ffffff;
+        border: 1px solid var(--goofy-border);
+        border-radius: 4px;
+        box-shadow: none;
+        padding: 0.5rem;
+    }
+
+    .tweet-embed {
+        min-height: 132px;
+    }
+
+    .tweet-fallback {
+        margin-top: 0.25rem;
+        padding: 0.65rem;
+    }
+
+    .concert-rows {
+        border: 1px solid #e4e9f0;
+        border-radius: 4px;
+        margin-top: 0.75rem;
+    }
+
+    .concert-row {
+        align-items: baseline;
+        border-bottom: 1px solid #edf1f6;
+        display: grid;
+        gap: 0.6rem;
+        grid-template-columns: 95px 1fr;
+        padding: 0.5rem 0.65rem;
+    }
+
+    .concert-row:last-child {
+        border-bottom: none;
+    }
+
+    .concert-year {
+        font-size: 0.95rem;
+        font-weight: 600;
+        margin: 0;
+        color: #3b4a59;
+    }
+
+    .concert-items {
+        font-size: 0.95rem;
+        line-height: 1.35;
+        margin: 0;
+    }
+
+    .concert-item {
+        white-space: normal;
+    }
+
+    .concert-sep {
+        color: #8ea0b3;
+    }
+
+    .wifi-columns {
+        column-count: 3;
+        column-gap: 1.6rem;
+        list-style: square;
+        margin: 0.75rem 0 0;
+        padding-left: 1.15rem;
+    }
+
+    .wifi-columns li {
+        break-inside: avoid;
+        margin-bottom: 0.38rem;
+        padding-right: 0.2rem;
+    }
+
+    @media (max-width: 767px) {
+        .goofy-page {
+            padding: 0;
+        }
+
+        .goofy-card {
+            padding: 1rem;
+        }
+
+        .concert-row {
+            gap: 0.25rem;
+            grid-template-columns: 1fr;
+        }
+
+        .concert-year {
+            margin-bottom: 0.1rem;
+        }
+
+        .wifi-columns {
+            column-count: 1;
+        }
+    }
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+        .wifi-columns {
+            column-count: 2;
+        }
     }
 </style>
 
-    
 {% endblock %}
