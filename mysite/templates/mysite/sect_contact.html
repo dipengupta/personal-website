@@ -52,10 +52,39 @@
                             </label>
                         </div>
                     </fieldset>
+
                 </div>
             </div>
         </div>
     </section>
+
+    {% if contact_images %}
+    <section class="goofy-card goofy-section goofy-kitchen">
+        <h3 class="goofy-subtitle">Kitchen Wins</h3>
+        <p class="goofy-copy contact-photo-copy">A rotating set of things I made.</p>
+        <div id="contactFoodCarousel" class="carousel slide home-profile-carousel contact-photo-carousel" data-bs-ride="carousel" data-bs-interval="3200">
+            <div class="carousel-inner">
+                {% for image in contact_images %}
+                <div class="carousel-item home-profile-slide {% if forloop.first %}active{% endif %}">
+                    <div class="home-profile-frame contact-photo-frame">
+                        <img class="img-fluid img-thumbnail contact-photo-image" src="{% static image.static_path %}" alt="{{ image.alt }}">
+                    </div>
+                    <div class="contact-photo-caption" aria-label="Photo caption">{{ image.caption }}</div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#contactFoodCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#contactFoodCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
+    {% endif %}
 
 {#    <section class="goofy-card goofy-section goofy-tweets">#}
 {#        <h3 class="goofy-subtitle">Random Tweets</h3>#}
@@ -116,52 +145,64 @@
 {#    </section>#}
 
     <section class="goofy-card goofy-section goofy-concerts">
-        <h3 class="goofy-subtitle">Concerts I've Seen</h3>
-        <p class="goofy-copy">Some of the concerts and events I’ve attended over the years.</p>
+        <details class="goofy-disclosure">
+            <summary class="goofy-summary">
+                <span class="goofy-subtitle goofy-summary-title">Concerts I've Seen</span>
+            </summary>
+            <div class="goofy-disclosure-body">
+                <p class="goofy-copy">Some of the concerts and events I’ve attended over the years.</p>
 
-        <div class="concert-rows">
-            {% for year, concerts in collections.items %}
-            <article class="concert-row">
-                <h4 class="concert-year">{{ year }}</h4>
-                <p class="concert-items">
-                    {% for concert in concerts %}
-                    <span class="concert-item">{{ concert }}</span>{% if not forloop.last %}<span class="concert-sep"> • </span>{% endif %}
+                <div class="concert-rows">
+                    {% for year, concerts in collections.items %}
+                    <article class="concert-row">
+                        <h4 class="concert-year">{{ year }}</h4>
+                        <p class="concert-items">
+                            {% for concert in concerts %}
+                            <span class="concert-item">{{ concert }}</span>{% if not forloop.last %}<span class="concert-sep"> • </span>{% endif %}
+                            {% endfor %}
+                        </p>
+                    </article>
                     {% endfor %}
-                </p>
-            </article>
-            {% endfor %}
-        </div>
+                </div>
+            </div>
+        </details>
     </section>
 
     <section class="goofy-card goofy-section goofy-wifi">
-        <h3 class="goofy-subtitle">Amusing Wi-Fi Names</h3>
-        <ul class="wifi-columns">
-            <li>Martin Router King</li>
-            <li>Tell_my_wifi_love_her</li>
-            <li>It_hurts_when_IP</li>
-            <li>The_LAN_before_time</li>
-            <li>House LANister</li>
-            <li>Winternet Is Coming</li>
-            <li>TitanicSyncing</li>
-            <li>Wi-Fight the Inevitable</li>
-            <li>Safe Levels of Radiation</li>
-            <li>Panic at the Cisco</li>
-            <li>For Whom the Belkin Tolls</li>
-            <li>You Shall Not Password</li>
-            <li>Lord of the Ping</li>
-            <li>That’s What She SSID</li>
-            <li>Skynet</li>
-            <li>Accio Internet</li>
-            <li>Dumbledore's IT Staff</li>
-            <li>I’m Not A Witch I’m Your Wifi</li>
-            <li>Never gonna give you wifi</li>
-            <li>Do Re Mi Fa So La Wi Fi</li>
-            <li>Routy McRouterface</li>
-            <li>LAN Halen</li>
-            <li>SpiderLAN</li>
-            <li>Lord Voldemodem</li>
-            <li>Wu-Tang LAN</li>
-        </ul>
+        <details class="goofy-disclosure">
+            <summary class="goofy-summary">
+                <span class="goofy-subtitle goofy-summary-title">Amusing Wi-Fi Names</span>
+            </summary>
+            <div class="goofy-disclosure-body">
+                <ul class="wifi-columns">
+                    <li>Martin Router King</li>
+                    <li>Tell_my_wifi_love_her</li>
+                    <li>It_hurts_when_IP</li>
+                    <li>The_LAN_before_time</li>
+                    <li>House LANister</li>
+                    <li>Winternet Is Coming</li>
+                    <li>TitanicSyncing</li>
+                    <li>Wi-Fight the Inevitable</li>
+                    <li>Safe Levels of Radiation</li>
+                    <li>Panic at the Cisco</li>
+                    <li>For Whom the Belkin Tolls</li>
+                    <li>You Shall Not Password</li>
+                    <li>Lord of the Ping</li>
+                    <li>That’s What She SSID</li>
+                    <li>Skynet</li>
+                    <li>Accio Internet</li>
+                    <li>Dumbledore's IT Staff</li>
+                    <li>I’m Not A Witch I’m Your Wifi</li>
+                    <li>Never gonna give you wifi</li>
+                    <li>Do Re Mi Fa So La Wi Fi</li>
+                    <li>Routy McRouterface</li>
+                    <li>LAN Halen</li>
+                    <li>SpiderLAN</li>
+                    <li>Lord Voldemodem</li>
+                    <li>Wu-Tang LAN</li>
+                </ul>
+            </div>
+        </details>
     </section>
 </div>
 

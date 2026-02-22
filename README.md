@@ -15,3 +15,21 @@ I'll probably keep updating this as and when big changes occur (~once a year atl
 ## Notes
 
 - Image workflow / best practices for this repo: `docs/image-workflow.md`
+
+---
+
+## Current Website Pages
+
+The site currently includes these main sections/pages:
+
+- Home
+- Professional
+- Academic
+- Music
+- Articles (with individual article detail pages)
+- Travels
+- Contact (theme selector, kitchen photo carousel, collapsible lists)
+
+Other pages:
+
+- Custom 404 page

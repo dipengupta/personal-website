@@ -459,7 +459,7 @@ def travel_page_context():
         "travel_points": points,
         "travel_gallery": [
             {
-                "title": "Mug Collection",
+                "title": "Mug Collection (atleast a part of it lol)",
                 "caption": "Starbucks mug collection display",
                 "img_id": "travel-mugs-photo",
                 "fallback_id": "travel-mugs-fallback",

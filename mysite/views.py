@@ -14,6 +14,38 @@ from .travel_data import travel_page_context
 
 logger = logging.getLogger(__name__)
 
+
+def _load_static_images_from_dir(subdir, alt_prefix, fallback_alt, caption_overrides=None):
+    image_dir = Path(settings.BASE_DIR) / "mysite" / "static" / "images" / subdir
+    allowed_exts = {".jpg", ".jpeg", ".png", ".webp", ".JPG", ".JPEG", ".PNG", ".WEBP"}
+    images = []
+    caption_overrides = caption_overrides or {}
+
+    if not image_dir.exists():
+        return images
+
+    for image_path in sorted(image_dir.iterdir()):
+        if not image_path.is_file() or image_path.name.startswith("."):
+            continue
+        if image_path.suffix not in allowed_exts:
+            continue
+
+        display_name = image_path.stem.replace("_", " ").replace("-", " ").strip()
+        alt_text = f"{alt_prefix} - {display_name}" if display_name else fallback_alt
+        caption = caption_overrides.get(image_path.stem.lower()) or (
+            display_name.title() if display_name else fallback_alt
+        )
+        images.append(
+            {
+                "static_path": f"images/{subdir}/{image_path.name}",
+                "alt": alt_text,
+                "caption": caption,
+            }
+        )
+
+    random.shuffle(images)
+    return images
+
 def _parse_utc_iso(value):
     if not value:
         return None
@@ -131,27 +163,11 @@ def _fetch_recent_tweets(username, max_results=30):
     return tweets, ""
 
 def displayHomePage(request):
-    home_image_dir = Path(settings.BASE_DIR) / "mysite" / "static" / "images" / "home"
-    allowed_exts = {".jpg", ".jpeg", ".png", ".webp", ".JPG", ".JPEG", ".PNG", ".WEBP"}
-    home_images = []
-
-    if home_image_dir.exists():
-        for image_path in sorted(home_image_dir.iterdir()):
-            if not image_path.is_file() or image_path.name.startswith("."):
-                continue
-            if image_path.suffix not in allowed_exts:
-                continue
-
-            display_name = image_path.stem.replace("_", " ").replace("-", " ").strip()
-            alt_text = f"Dipen photo - {display_name}" if display_name else "Dipen profile photo"
-            home_images.append(
-                {
-                    "static_path": f"images/home/{image_path.name}",
-                    "alt": alt_text,
-                }
-            )
-
-    random.shuffle(home_images)
+    home_images = _load_static_images_from_dir(
+        subdir="home",
+        alt_prefix="Dipen photo",
+        fallback_alt="Dipen profile photo",
+    )
 
     masterDict = {
         "home_images": home_images,
@@ -197,6 +213,26 @@ def displayContactPage(request):
         "2024": ["Cory Wong", "Juice", "SOJA and Arise Roots", "Slash", "Steel Panther", "Coheed and Cambria", "Green Day and Smashing Pumpkins", "coolcoolcool", "Grateful Dead cover show"],
         "2025": ["Buckethead", "Periphery"],
     }
+
+    contact_caption_overrides = {
+        "pizza": "Homemade Pizza",
+        "lasagna": "Lasagna",
+        "sourdough": "Sourdough",
+        "gretan": "Potato Gratin",
+        "muffins": "Muffins",
+        "spanakopita": "Spanakopita",
+        "cornbread": "Cornbread",
+        "gyoza": "Gyoza",
+        "brownies": "Brownies",
+        "khao-soi": "Khao Soi",
+    }
+
+    contact_images = _load_static_images_from_dir(
+        subdir="contact",
+        alt_prefix="Food photo",
+        fallback_alt="Food photo",
+        caption_overrides=contact_caption_overrides,
+    )
 
     username = "20swithepennguy"
     cache_key = f"x_recent_tweets_daily_{username}"
@@ -278,6 +314,7 @@ def displayContactPage(request):
         'mysite/sect_contact.html',
         {
             'collections': concerts_seen,
+            'contact_images': contact_images,
             'tweets': tweets_to_show,
             'tweet_username': username,
             'tweet_error': tweet_error,
