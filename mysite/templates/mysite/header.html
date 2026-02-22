@@ -6,6 +6,20 @@
 	<title>Dipen Gupta</title>
 	<meta charset="utf-8" />
 	{% load static %}
+	<script>
+		(function () {
+			try {
+				var savedTheme = localStorage.getItem('dipen-site-theme');
+				if (savedTheme) {
+					document.documentElement.setAttribute('data-theme', savedTheme);
+				} else {
+					document.documentElement.setAttribute('data-theme', 'light');
+				}
+			} catch (e) {
+				document.documentElement.setAttribute('data-theme', 'light');
+			}
+		})();
+	</script>
 
 
 	<!-- This is the JS file for jQuery -->
@@ -17,6 +31,7 @@
 
 	<!-- this is main bootstrap CSS file -->
 	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type = "text/css"/>
+	<link rel="stylesheet" href="{% static 'css/site.css' %}" type="text/css"/>
 
 
 	<meta name="viewport" content = "width=device-width, initial-scale=1.0">
@@ -33,73 +48,14 @@
 
 		gtag('config', 'G-SCKB0EDQCG');
 	</script>
-
-
-	<style>
-		.carousel-item-fixed-height {
-			height: auto;
-			min-height: 400px;
-		}
-
-		.carousel-item-fixed-height .img-fluid {
-			max-height: 400px;
-			width: auto;
-		}
-
-		.home-profile-carousel {
-			max-width: 38rem;
-			margin: 0 auto;
-		}
-
-		.home-profile-slide {
-			padding: 0.25rem 2.5rem;
-		}
-
-		.home-profile-frame {
-			height: 26rem;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			padding: 0.5rem;
-			border-radius: 0.4rem;
-		}
-
-		.home-profile-frame .img-thumbnail {
-			max-height: 100%;
-			max-width: 100%;
-			width: auto;
-			height: auto;
-		}
-
-		.home-profile-carousel .carousel-control-prev,
-		.home-profile-carousel .carousel-control-next {
-			width: 14%;
-			filter: invert(100%);
-			display: none;
-		}
-
-		@media (max-width: 767.98px) {
-			.home-profile-carousel {
-				max-width: 100%;
-			}
-
-			.home-profile-slide {
-				padding: 0.25rem 2rem;
-			}
-
-			.home-profile-frame {
-				height: 20rem;
-				padding: 0.35rem;
-			}
-		}
-	</style>
+	{% block extra_head %}{% endblock %}
 
 
 
 </head>
 
 
-<body class="d-flex flex-column min-vh-100">
+	<body class="d-flex flex-column min-vh-100">
 
 
 	<!-- header -->
@@ -261,13 +217,12 @@
 
 	</footer>
 
-
-
+	<script src="{% static 'js/theme-switcher.js' %}"></script>
+	{% block extra_scripts %}{% endblock %}
 </body>
 
 
 
 </html>
-
 
 

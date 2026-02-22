@@ -1,7 +1,12 @@
 {% extends "mysite/header.html" %}
 
-{% block content %}
 {% load static %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/contact.css' %}" type="text/css"/>
+{% endblock %}
+
+{% block content %}
 <div class="goofy-page container py-3 py-md-4">
     <section class="goofy-card goofy-hero">
         <div class="row g-4 align-items-start">
@@ -12,6 +17,42 @@
                     <li><a href="mailto:dipenrgupta@gmail.com">dipenrgupta@gmail.com</a></li>
                     <li><a href="mailto:dipenrgupta@icloud.com">dipenrgupta@icloud.com</a></li>
                 </ul>
+            </div>
+            <div class="col-lg-5">
+                <div class="theme-panel" aria-labelledby="theme-panel-title">
+                    <h3 id="theme-panel-title" class="theme-panel-title">Theme</h3>
+                    <p class="theme-panel-copy">Pick a look for the site.</p>
+                    <fieldset class="theme-picker" aria-label="Website theme selector">
+                        <legend class="visually-hidden">Website theme</legend>
+                        <div class="theme-picker-segmented" data-theme-track data-index="0">
+                            <span class="theme-picker-thumb" aria-hidden="true"></span>
+
+                            <input class="theme-picker-input" type="radio" name="site-theme" id="theme-light" value="light" checked>
+                            <label class="theme-picker-label" for="theme-light">
+                                <span class="theme-dot theme-dot-light"></span>
+                                <span>Light</span>
+                            </label>
+
+                            <input class="theme-picker-input" type="radio" name="site-theme" id="theme-dark" value="dark">
+                            <label class="theme-picker-label" for="theme-dark">
+                                <span class="theme-dot theme-dot-dark"></span>
+                                <span>Dark</span>
+                            </label>
+
+                            <input class="theme-picker-input" type="radio" name="site-theme" id="theme-beige" value="beige">
+                            <label class="theme-picker-label" for="theme-beige">
+                                <span class="theme-dot theme-dot-beige"></span>
+                                <span>Beige</span>
+                            </label>
+
+                            <input class="theme-picker-input" type="radio" name="site-theme" id="theme-chaos" value="chaos">
+                            <label class="theme-picker-label" for="theme-chaos">
+                                <span class="theme-dot theme-dot-chaos"></span>
+                                <span>Wildcard</span>
+                            </label>
+                        </div>
+                    </fieldset>
+                </div>
             </div>
         </div>
     </section>
@@ -123,221 +164,5 @@
         </ul>
     </section>
 </div>
-
-<style>
-    .goofy-page {
-        --goofy-ink: #25313d;
-        --goofy-link: #0f4c81;
-        --goofy-card-bg: #ffffff;
-        --goofy-border: #d8e0ea;
-        --goofy-radius: 4px;
-        --goofy-gap: 1rem;
-        color: var(--goofy-ink);
-        display: grid;
-        gap: var(--goofy-gap);
-        padding: 0;
-    }
-
-    .goofy-card {
-        background: var(--goofy-card-bg);
-        border: 1px solid var(--goofy-border);
-        border-radius: var(--goofy-radius);
-        box-shadow: none;
-        padding: 1rem 1rem 1.1rem;
-    }
-
-    .goofy-hero {
-        background: #fff;
-    }
-
-    .goofy-section {
-        position: relative;
-    }
-
-    .goofy-tweets {
-        background: #fff;
-    }
-
-    .goofy-concerts {
-        background: #fff;
-    }
-
-    .goofy-wifi {
-        background: #fff;
-    }
-
-    .goofy-title,
-    .goofy-subtitle {
-        color: var(--goofy-ink);
-        {#font-family: "Trebuchet MS", "Gill Sans", sans-serif;#}
-        font-weight: 700;
-        margin-bottom: 0.55rem;
-    }
-
-    .goofy-title {
-        font-size: clamp(1.6rem, 2.3vw, 2rem);
-    }
-
-    .goofy-subtitle {
-        font-size: clamp(1.25rem, 1.8vw, 1.5rem);
-    }
-
-    .goofy-copy {
-        color: #47586a;
-        margin-bottom: 0.75rem;
-    }
-
-    .goofy-error {
-        color: #7d1f1f;
-        font-size: 0.92rem;
-        margin: 0;
-    }
-
-    .goofy-notice {
-        color: #6e5a15;
-        font-size: 0.92rem;
-        margin: -0.2rem 0 0.6rem;
-    }
-
-    .goofy-note {
-        background: #f7f9fc;
-        border: 1px solid #dce3ec;
-        border-radius: 4px;
-        padding: 0.8rem 0.9rem;
-    }
-
-    .goofy-note p {
-        color: #57697c;
-        margin: 0.4rem 0 0;
-    }
-
-    .contact-list {
-        margin: 0;
-        padding-left: 1.1rem;
-    }
-
-    .contact-list li {
-        margin-bottom: 0.45rem;
-    }
-
-    .goofy-page a {
-        color: var(--goofy-link);
-        text-decoration: none;
-    }
-
-    .goofy-page a:hover {
-        text-decoration: underline;
-    }
-
-    .goofy-grid {
-        display: grid;
-        gap: 0.75rem;
-        margin-top: 0.75rem;
-    }
-
-    .goofy-grid-tweets {
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    }
-
-    .goofy-panel {
-        background: #ffffff;
-        border: 1px solid var(--goofy-border);
-        border-radius: 4px;
-        box-shadow: none;
-        padding: 0.5rem;
-    }
-
-    .tweet-embed {
-        min-height: 132px;
-    }
-
-    .tweet-fallback {
-        margin-top: 0.25rem;
-        padding: 0.65rem;
-    }
-
-    .concert-rows {
-        border: 1px solid #e4e9f0;
-        border-radius: 4px;
-        margin-top: 0.75rem;
-    }
-
-    .concert-row {
-        align-items: baseline;
-        border-bottom: 1px solid #edf1f6;
-        display: grid;
-        gap: 0.6rem;
-        grid-template-columns: 95px 1fr;
-        padding: 0.5rem 0.65rem;
-    }
-
-    .concert-row:last-child {
-        border-bottom: none;
-    }
-
-    .concert-year {
-        font-size: 0.95rem;
-        font-weight: 600;
-        margin: 0;
-        color: #3b4a59;
-    }
-
-    .concert-items {
-        font-size: 0.95rem;
-        line-height: 1.35;
-        margin: 0;
-    }
-
-    .concert-item {
-        white-space: normal;
-    }
-
-    .concert-sep {
-        color: #8ea0b3;
-    }
-
-    .wifi-columns {
-        column-count: 3;
-        column-gap: 1.6rem;
-        list-style: square;
-        margin: 0.75rem 0 0;
-        padding-left: 1.15rem;
-    }
-
-    .wifi-columns li {
-        break-inside: avoid;
-        margin-bottom: 0.38rem;
-        padding-right: 0.2rem;
-    }
-
-    @media (max-width: 767px) {
-        .goofy-page {
-            padding: 0;
-        }
-
-        .goofy-card {
-            padding: 1rem;
-        }
-
-        .concert-row {
-            gap: 0.25rem;
-            grid-template-columns: 1fr;
-        }
-
-        .concert-year {
-            margin-bottom: 0.1rem;
-        }
-
-        .wifi-columns {
-            column-count: 1;
-        }
-    }
-
-    @media (min-width: 768px) and (max-width: 1024px) {
-        .wifi-columns {
-            column-count: 2;
-        }
-    }
-</style>
 
 {% endblock %}
