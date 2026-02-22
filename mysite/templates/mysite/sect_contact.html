@@ -16,63 +16,63 @@
         </div>
     </section>
 
-    <section class="goofy-card goofy-section goofy-tweets">
-        <h3 class="goofy-subtitle">Random Tweets</h3>
+{#    <section class="goofy-card goofy-section goofy-tweets">#}
+{#        <h3 class="goofy-subtitle">Random Tweets</h3>#}
 {#        <p class="goofy-copy">Fresh picks from <a href="https://x.com/{{ tweet_username }}" target="_blank" rel="noopener noreferrer">@{{ tweet_username }}</a> on each refresh.</p>#}
-        {% if tweet_notice %}
-        <p class="goofy-notice">{{ tweet_notice }}</p>
-        {% endif %}
-
-        {% if tweets %}
-        <div id="random-tweets" class="goofy-grid goofy-grid-tweets">
-            {% for tweet in tweets %}
-            <div class="goofy-panel tweet-embed">
-                <blockquote class="twitter-tweet" data-dnt="true">
-                    <a href="https://twitter.com/{{ tweet_username }}/status/{{ tweet.id }}" target="_blank" rel="noopener noreferrer">
-                        View tweet {{ forloop.counter }}
-                    </a>
-                </blockquote>
-            </div>
-            {% endfor %}
-        </div>
-        <script>
-            (function () {
-                function hydrateTweetEmbeds() {
-                    if (window.twttr && window.twttr.widgets) {
-                        var container = document.getElementById('random-tweets');
-                        window.twttr.widgets.load(container);
-                    }
-                }
-
-                if (window.twttr && window.twttr.widgets) {
-                    hydrateTweetEmbeds();
-                    return;
-                }
-
-                var script = document.createElement('script');
-                script.async = true;
-                script.src = 'https://platform.twitter.com/widgets.js';
-                script.charset = 'utf-8';
-                script.onload = hydrateTweetEmbeds;
-                document.body.appendChild(script);
-            })();
-        </script>
-        {% else %}
-        <p class="goofy-copy">Showing the live timeline while the random tweet cache refreshes.</p>
-        <div class="goofy-panel tweet-fallback">
-            <a class="twitter-timeline"
-               data-height="540"
-               data-dnt="true"
-               href="https://twitter.com/{{ tweet_username }}?ref_src=twsrc%5Etfw">
-                Tweets by @{{ tweet_username }}
-            </a>
-        </div>
-        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-        {% if tweet_error %}
-        <p class="goofy-error">Debug: {{ tweet_error }}</p>
-        {% endif %}
-        {% endif %}
-    </section>
+{#        {% if tweet_notice %}#}
+{#        <p class="goofy-notice">{{ tweet_notice }}</p>#}
+{#        {% endif %}#}
+{##}
+{#        {% if tweets %}#}
+{#        <div id="random-tweets" class="goofy-grid goofy-grid-tweets">#}
+{#            {% for tweet in tweets %}#}
+{#            <div class="goofy-panel tweet-embed">#}
+{#                <blockquote class="twitter-tweet" data-dnt="true">#}
+{#                    <a href="https://twitter.com/{{ tweet_username }}/status/{{ tweet.id }}" target="_blank" rel="noopener noreferrer">#}
+{#                        View tweet {{ forloop.counter }}#}
+{#                    </a>#}
+{#                </blockquote>#}
+{#            </div>#}
+{#            {% endfor %}#}
+{#        </div>#}
+{#        <script>#}
+{#            (function () {#}
+{#                function hydrateTweetEmbeds() {#}
+{#                    if (window.twttr && window.twttr.widgets) {#}
+{#                        var container = document.getElementById('random-tweets');#}
+{#                        window.twttr.widgets.load(container);#}
+{#                    }#}
+{#                }#}
+{##}
+{#                if (window.twttr && window.twttr.widgets) {#}
+{#                    hydrateTweetEmbeds();#}
+{#                    return;#}
+{#                }#}
+{##}
+{#                var script = document.createElement('script');#}
+{#                script.async = true;#}
+{#                script.src = 'https://platform.twitter.com/widgets.js';#}
+{#                script.charset = 'utf-8';#}
+{#                script.onload = hydrateTweetEmbeds;#}
+{#                document.body.appendChild(script);#}
+{#            })();#}
+{#        </script>#}
+{#        {% else %}#}
+{#        <p class="goofy-copy">Showing the live timeline while the random tweet cache refreshes.</p>#}
+{#        <div class="goofy-panel tweet-fallback">#}
+{#            <a class="twitter-timeline"#}
+{#               data-height="540"#}
+{#               data-dnt="true"#}
+{#               href="https://twitter.com/{{ tweet_username }}?ref_src=twsrc%5Etfw">#}
+{#                Tweets by @{{ tweet_username }}#}
+{#            </a>#}
+{#        </div>#}
+{#        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>#}
+{#        {% if tweet_error %}#}
+{#        <p class="goofy-error">Debug: {{ tweet_error }}</p>#}
+{#        {% endif %}#}
+{#        {% endif %}#}
+{#    </section>#}
 
     <section class="goofy-card goofy-section goofy-concerts">
         <h3 class="goofy-subtitle">Concerts I've Seen</h3>

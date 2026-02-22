@@ -15,8 +15,38 @@
             <div class="col">
                 <h2 class="display-4 font-weight-bold">Hi, I'm Dipen.</h2>
                 <br>
-                <div class="container-fluid">
-                    <img class="img-fluid img-thumbnail" src="{% static 'images/main.jpeg' %}" alt="dipen" height="1000rem" width="1000rem">
+                <div id="homeProfileCarouselDesktop" class="carousel slide home-profile-carousel container-fluid px-0" data-bs-ride="carousel" data-bs-interval="2750">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active home-profile-slide">
+                            <div class="home-profile-frame">
+                                <img class="img-fluid img-thumbnail" src="{% static 'images/main.jpeg' %}" alt="Dipen profile photo">
+                            </div>
+                        </div>
+                        <div class="carousel-item home-profile-slide">
+                            <div class="home-profile-frame">
+                                <img class="img-fluid img-thumbnail" src="{% static 'images/home/acadia_profile.JPG' %}" alt="Dipen profile photo in Acadia">
+                            </div>
+                        </div>
+                        <div class="carousel-item home-profile-slide">
+                            <div class="home-profile-frame">
+                                <img class="img-fluid img-thumbnail" src="{% static 'images/home/acoustic_profile.JPG' %}" alt="Dipen with acoustic guitar">
+                            </div>
+                        </div>
+                        <div class="carousel-item home-profile-slide">
+                            <div class="home-profile-frame">
+                                <img class="img-fluid img-thumbnail" src="{% static 'images/home/doubleneck_profile.jpeg' %}" alt="Dipen with doubleneck guitar">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="carousel-control-prev" type="button" data-bs-target="#homeProfileCarouselDesktop" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#homeProfileCarouselDesktop" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
             </div> 
     
@@ -39,8 +69,38 @@
     <div class="jumbotron d-xs-block d-sm-block d-md-none justify-content-center mx-2">
 
         <h2 class="display-4 font-weight-bold">Hi, I'm Dipen.</h2>
-        <div class="container-fluid text-center mt-1">
-            <img class="img-fluid img-thumbnail center-block" src="{% static 'images/main.jpeg' %}" alt="dipen" height="450rem" width="450rem">
+        <div id="homeProfileCarouselMobile" class="carousel slide home-profile-carousel mt-1" data-bs-ride="carousel" data-bs-interval="2750">
+            <div class="carousel-inner">
+                <div class="carousel-item active home-profile-slide">
+                    <div class="home-profile-frame">
+                        <img class="img-fluid img-thumbnail center-block" src="{% static 'images/main.jpeg' %}" alt="Dipen profile photo">
+                    </div>
+                </div>
+                <div class="carousel-item home-profile-slide">
+                    <div class="home-profile-frame">
+                        <img class="img-fluid img-thumbnail center-block" src="{% static 'images/home/acadia_profile.JPG' %}" alt="Dipen profile photo in Acadia">
+                    </div>
+                </div>
+                <div class="carousel-item home-profile-slide">
+                    <div class="home-profile-frame">
+                        <img class="img-fluid img-thumbnail center-block" src="{% static 'images/home/acoustic_profile.JPG' %}" alt="Dipen with acoustic guitar">
+                    </div>
+                </div>
+                <div class="carousel-item home-profile-slide">
+                    <div class="home-profile-frame">
+                        <img class="img-fluid img-thumbnail center-block" src="{% static 'images/home/doubleneck_profile.jpeg' %}" alt="Dipen with doubleneck guitar">
+                    </div>
+                </div>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#homeProfileCarouselMobile" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#homeProfileCarouselMobile" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
         <br>
         <h2 class="display-6 font-weight-bold">I'm a software developer, musician and a PennState graduate.</h2>
