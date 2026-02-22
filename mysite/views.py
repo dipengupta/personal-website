@@ -5,8 +5,10 @@ from datetime import datetime, timedelta, timezone
 from urllib import error, parse, request as urlrequest
 
 from django.conf import settings
+from django.http import Http404
 from django.shortcuts import render
 from django.core.cache import cache
+from django.template import TemplateDoesNotExist
 
 logger = logging.getLogger(__name__)
 
@@ -261,4 +263,4 @@ def displayContactPage(request):
     )
 
 def handlerView404(request):
-    return render(request, 'mysite/404_handler.html')
+    return render(request, 'mysite/404_handler.html', status=404)
