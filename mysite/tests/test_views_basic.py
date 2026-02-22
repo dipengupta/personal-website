@@ -11,6 +11,8 @@ class BasicViewTests(SimpleTestCase):
             ("/music/", "mysite/sect_music.html"),
             ("/articles/", "mysite/sect_articles.html"),
             ("/contact/", "mysite/sect_contact.html"),
+            ("/explore/", "mysite/sect_travels.html"),
+            ("/travels/", "mysite/sect_travels.html"),
         ]
         for path, template in pages:
             with self.subTest(path=path):

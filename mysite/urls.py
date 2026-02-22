@@ -12,8 +12,9 @@ urlpatterns = [
 	re_path(r'^articles/$', views.displayArticlesPage, name='articles-page'),
 	re_path(r'^articles/(?P<article_name>[\w-]+)/$', views.displayArticleDetail, name='article-detail'),
 	re_path(r'contact/', views.displayContactPage, name='contact-page'),
+	re_path(r'explore/', views.displayTravelsPage, name='explore-page'),
+	re_path(r'travels/', views.displayTravelsPage, name='travels-page'),
 	# re_path(r'^pennguytweets/$', views.penn_guy_tweets, name='PennGuyTweets'),
 	re_path(r'.*/', views.handlerView404, name='404-page'),
 
 ]
-

@@ -1,6 +1,7 @@
 import json
 import logging
 import random
+from pathlib import Path
 from datetime import datetime, timedelta, timezone
 from urllib import error, parse, request as urlrequest
 
@@ -9,6 +10,7 @@ from django.http import Http404
 from django.shortcuts import render
 from django.core.cache import cache
 from django.template import TemplateDoesNotExist
+from .travel_data import travel_page_context
 
 logger = logging.getLogger(__name__)
 
@@ -129,9 +131,30 @@ def _fetch_recent_tweets(username, max_results=30):
     return tweets, ""
 
 def displayHomePage(request):
+    home_image_dir = Path(settings.BASE_DIR) / "mysite" / "static" / "images" / "home"
+    allowed_exts = {".jpg", ".jpeg", ".png", ".webp", ".JPG", ".JPEG", ".PNG", ".WEBP"}
+    home_images = []
+
+    if home_image_dir.exists():
+        for image_path in sorted(home_image_dir.iterdir()):
+            if not image_path.is_file() or image_path.name.startswith("."):
+                continue
+            if image_path.suffix not in allowed_exts:
+                continue
+
+            display_name = image_path.stem.replace("_", " ").replace("-", " ").strip()
+            alt_text = f"Dipen photo - {display_name}" if display_name else "Dipen profile photo"
+            home_images.append(
+                {
+                    "static_path": f"images/home/{image_path.name}",
+                    "alt": alt_text,
+                }
+            )
+
+    random.shuffle(home_images)
 
     masterDict = {
-        'key' : 'value'
+        "home_images": home_images,
     }
 
     return render(request, 'mysite/home.html', masterDict)
@@ -261,6 +284,10 @@ def displayContactPage(request):
             'tweet_notice': tweet_notice,
         }
     )
+
+
+def displayTravelsPage(request):
+    return render(request, "mysite/sect_travels.html", travel_page_context())
 
 def handlerView404(request):
     return render(request, 'mysite/404_handler.html', status=404)

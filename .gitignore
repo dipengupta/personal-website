@@ -4,3 +4,8 @@ mysite/__pycache__/
 /static/
 *.pyc
 .DS_Store
+
+# Local photo/original workflows (keep originals out of git)
+mysite/static/images/_originals/
+image-workbench/
+tmp/image-exports/

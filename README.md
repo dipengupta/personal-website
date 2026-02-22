@@ -11,3 +11,7 @@ The layout is pretty straightforward. It consists of the following pages:
 - Contact
 
 I'll probably keep updating this as and when big changes occur (~once a year atleast)
+
+## Notes
+
+- Image workflow / best practices for this repo: `docs/image-workflow.md`

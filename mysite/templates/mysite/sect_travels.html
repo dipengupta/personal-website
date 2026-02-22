@@ -1,0 +1,83 @@
+{% extends "mysite/header.html" %}
+{% load static %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+<link rel="stylesheet" href="{% static 'css/travels.css' %}" type="text/css"/>
+{% endblock %}
+
+{% block content %}
+<div class="travels-page py-2 py-md-3">
+    <section class="travels-hero">
+        <div>
+            <h1 class="travels-title">Map Room</h1>
+            <p class="travels-copy">
+                Explore places I've visited and mugs I've collected on an interactive map.
+            </p>
+        </div>
+    </section>
+
+    <section id="travels-layout" class="travels-layout" aria-label="Interactive map and details">
+        <div class="travels-map-card">
+            <div class="travels-toolbar" role="group" aria-label="Map filters">
+                <label class="travels-toggle">
+                    <input type="checkbox" id="toggle-visited" checked>
+                    <span class="swatch swatch-visited" aria-hidden="true"></span>
+                    <span>Places Visited</span>
+                </label>
+                <label class="travels-toggle">
+                    <input type="checkbox" id="toggle-mugs" checked>
+                    <span class="swatch swatch-mug" aria-hidden="true"></span>
+                    <span>Starbucks Mug Collection</span>
+                </label>
+                <span class="travels-toolbar-spacer" aria-hidden="true"></span>
+                <button id="reset-map-view" class="btn btn-sm btn-outline-secondary" type="button">Reset View</button>
+            </div>
+            <div id="travels-map" class="travels-map" aria-label="World travel map"></div>
+            <p class="travels-map-footnote mb-0">
+                Pins are approximate (and sometimes nudged slightly) so they stay clickable.
+            </p>
+        </div>
+
+        <aside class="travels-side-panel">
+            <section class="travels-card">
+                <h2 class="travels-section-title">Selected Pin</h2>
+                <div id="map-selection-panel" class="map-selection-panel" aria-live="polite">
+                    <p class="map-selection-empty mb-0">Click a pin to preview it here.</p>
+                </div>
+            </section>
+        </aside>
+    </section>
+
+    <section class="travels-gallery-grid" aria-label="Collection photos">
+        {% for photo in travel_gallery %}
+        <section class="travels-card">
+            <div class="travels-photo-head">
+                <div>
+                    <h2 class="travels-section-title mb-1">{{ photo.title }}</h2>
+                </div>
+            </div>
+            <figure class="travels-photo-frame mb-0">
+                <img
+                    id="{{ photo.img_id }}"
+                    src="{% static photo.primary_path %}"
+                    alt="{{ photo.caption }}"
+                    loading="lazy"
+                />
+                <div id="{{ photo.fallback_id }}" class="travels-photo-fallback" hidden>
+                    Add image at <code>mysite/static/{{ photo.primary_path }}</code>
+                </div>
+            </figure>
+        </section>
+        {% endfor %}
+    </section>
+</div>
+
+{{ travel_points|json_script:"travel-points-data" }}
+{{ travel_gallery|json_script:"travel-gallery-data" }}
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="{% static 'js/travels-map.js' %}"></script>
+{% endblock %}

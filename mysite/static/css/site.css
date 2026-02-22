@@ -49,25 +49,25 @@ html[data-theme="dark"] {
 
 html[data-theme="beige"] {
     color-scheme: light;
-    --site-bg: #efe7db;
-    --site-bg-accent: radial-gradient(circle at 10% 10%, rgba(165, 120, 71, 0.12), transparent 44%), radial-gradient(circle at 90% 8%, rgba(96, 138, 120, 0.11), transparent 40%);
-    --site-text: #342a22;
-    --site-muted: #6b5b4d;
-    --site-link: #8a4d22;
-    --site-link-hover: #6f3a16;
-    --site-surface: #fbf6ee;
-    --site-surface-alt: #f3eadf;
-    --site-border: #d9c8b6;
-    --site-divider: #e2d5c8;
-    --site-shadow: 0 10px 22px rgba(76, 54, 33, 0.08);
-    --site-navbar-bg: #4b3a2d;
+    --site-bg: #f4eee5;
+    --site-bg-accent: radial-gradient(circle at 10% 10%, rgba(165, 120, 71, 0.08), transparent 44%), radial-gradient(circle at 90% 8%, rgba(96, 138, 120, 0.08), transparent 40%);
+    --site-text: #3a312a;
+    --site-muted: #75685b;
+    --site-link: #7f4f2d;
+    --site-link-hover: #6a4023;
+    --site-surface: #fdfaf4;
+    --site-surface-alt: #f7f0e7;
+    --site-border: #dfd1c1;
+    --site-divider: #e8ddd2;
+    --site-shadow: 0 10px 22px rgba(76, 54, 33, 0.06);
+    --site-navbar-bg: #5a493d;
     --site-navbar-border: rgba(255, 255, 255, 0.08);
     --site-navbar-text: #fff7eb;
     --site-navbar-link: #f0e4d0;
     --site-navbar-link-hover: #ffffff;
-    --site-focus: #9a5b2f;
-    --site-thumb: linear-gradient(180deg, #fffaf0 0%, #efe4d4 100%);
-    --site-thumb-border: #d9c8b6;
+    --site-focus: #8e5c38;
+    --site-thumb: linear-gradient(180deg, #fffdf8 0%, #f3eadf 100%);
+    --site-thumb-border: #dfd1c1;
     --site-icon-filter: invert(99%) sepia(5%) saturate(481%) hue-rotate(325deg) brightness(109%) contrast(97%);
 }
 
@@ -217,7 +217,7 @@ svg.bi {
 }
 
 .home-profile-carousel {
-    max-width: 38rem;
+    max-width: 42rem;
     margin: 0 auto;
 }
 
@@ -226,7 +226,7 @@ svg.bi {
 }
 
 .home-profile-frame {
-    height: 26rem;
+    height: 30rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -271,5 +271,19 @@ svg.bi {
     .home-profile-frame {
         height: 20rem;
         padding: 0.35rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .home-profile-carousel {
+        max-width: 46rem;
+    }
+
+    .home-profile-slide {
+        padding: 0.25rem 1.75rem;
+    }
+
+    .home-profile-frame {
+        height: 33rem;
     }
 }

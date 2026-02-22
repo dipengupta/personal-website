@@ -77,3 +77,9 @@ class ContactPageTests(SimpleTestCase):
         self.assertEqual(response.context["tweet_error"], "")
         self.assertIn("rate-limited", response.context["tweet_notice"])
 
+    def test_contact_page_renders_without_map_room_link(self):
+        with patch("mysite.views._fetch_recent_tweets", return_value=([], "")):
+            response = self.client.get("/contact/")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertNotContains(response, 'href="/explore/"')
