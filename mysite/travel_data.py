@@ -42,6 +42,7 @@ STATE_COORDS = {
     "Maine": (45.2538, -69.4455),
     "Louisiana": (30.9843, -91.9623),
     "Indiana": (39.7684, -86.1581),
+    "Kentucky": (38.2009, -84.8733),
     "Rhode Island": (41.6809, -71.5118),
     "Massachusetts": (42.3601, -71.0589),
     "Connecticut": (41.7658, -72.6734),
@@ -168,6 +169,15 @@ VISITED_LOCATIONS = [
         "subtitle": "Visited Places",
         "notes": ["Saad's Wedding - IN Trip with Octavium"],
         "state": "Indiana",
+        "country": "USA",
+    },
+    {
+        "title": "Mammoth Cave National Park, Kentucky, USA",
+        "lat": 37.1869,
+        "lng": -86.1014,
+        "subtitle": "Visited Places",
+        "notes": ["Mammoth Caves trip with CG"],
+        "state": "Kentucky",
         "country": "USA",
     },
     {
@@ -333,6 +343,7 @@ MUG_STATES = [
     ("Maine", ""),
     ("Louisiana", "Tapas"),
     ("Indiana", ""),
+    ("Kentucky", ""),
     ("Rhode Island", ""),
     ("Massachusetts", ""),
     ("Connecticut", ""),
@@ -460,6 +471,7 @@ def travel_page_context():
         "travel_gallery": [
             {
                 "title": "Mug Collection (atleast a part of it lol)",
+                "description": "Part of the Starbucks mug collection from places I've visited and gifts I've received.",
                 "caption": "Starbucks mug collection display",
                 "img_id": "travel-mugs-photo",
                 "fallback_id": "travel-mugs-fallback",
@@ -474,7 +486,23 @@ def travel_page_context():
                 ],
             },
             {
+                "title": "Vinyl Collection",
+                "description": "A small vinyl corner with the turntable, speakers, and part of the record stack.",
+                "caption": "Turntable and vinyl collection setup",
+                "img_id": "travel-vinyl-photo",
+                "fallback_id": "travel-vinyl-fallback",
+                "primary_path": "images/travel/vinyls.jpeg",
+                "fallback_paths": [
+                    "images/travel/vinyls.jpg",
+                    "images/travel/vinyl-collection.jpeg",
+                    "images/travel/vinyl-collection.jpg",
+                    "images/travel/records.jpeg",
+                    "images/travel/records.jpg",
+                ],
+            },
+            {
                 "title": "Travel Magnets",
+                "description": "Fridge magnets picked up across different trips over the years.",
                 "caption": "Fridge magnet collection",
                 "img_id": "travel-magnet-photo",
                 "fallback_id": "travel-magnet-fallback",

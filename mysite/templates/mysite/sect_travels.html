@@ -12,7 +12,7 @@
         <div>
             <h1 class="travels-title">Map Room</h1>
             <p class="travels-copy">
-                Explore places I've visited and mugs I've collected on an interactive map.
+                Explore places I've visited and a few collections from home, including travel mugs, magnets, and vinyls.
             </p>
         </div>
     </section>
@@ -55,6 +55,9 @@
             <div class="travels-photo-head">
                 <div>
                     <h2 class="travels-section-title mb-1">{{ photo.title }}</h2>
+                    {% if photo.description %}
+                    <p class="travels-copy-sm mb-0">{{ photo.description }}</p>
+                    {% endif %}
                 </div>
             </div>
             <figure class="travels-photo-frame mb-0">
