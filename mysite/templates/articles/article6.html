@@ -1,10 +1,13 @@
-{% extends "mysite/header.html" %}
+{% extends "articles/base_saved_article.html" %}
 
-{% block content %}
+{% block article_title %}We do(n't) need no education?{% endblock %}
+{% block article_source_url %}https://dipengupta.substack.com/p/we-dont-need-no-education{% endblock %}
+{% block article_source_label %}View original source on Substack{% endblock %}
+{% block article_published_label %}Published Apr 2025{% endblock %}
 
-    <strong>We do(n't) need no education?</strong>
-    
-    Let me start this off by asking a question: why would you ever wash a spoon if you live in 2025, with a working dishwasher?
+{% block article_body %}
+{% filter linebreaks %}
+Let me start this off by asking a question: why would you ever wash a spoon if you live in 2025, with a working dishwasher?
 
 This might seem frivolous, but it underscores a very important shift. Profound change is (and has been) happening around us for a while. It’s really important for us to acknowledge that and be able to find a place in it. I want to shed some light to this matter with this article.
 
@@ -89,5 +92,5 @@ P.S.
 I know this turned out to be more of a rant, but I wanted to write about this for a while now. I’ll leave you with one thing that I’ve been trying to do for a few years now, and it’s something I believe is super useful for almost everyone:
 
 “Mindful consumption of content.”
-    
+{% endfilter %}
 {% endblock %}

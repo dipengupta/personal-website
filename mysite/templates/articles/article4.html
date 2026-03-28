@@ -1,10 +1,13 @@
-article1.html{% extends "mysite/header.html" %}
+{% extends "articles/base_saved_article.html" %}
 
-{% block content %}
+{% block article_title %}Keeping up with AI{% endblock %}
+{% block article_source_url %}https://dipengupta.substack.com/p/keeping-up-with-ai{% endblock %}
+{% block article_source_label %}View original source on Substack{% endblock %}
+{% block article_published_label %}Published Oct 2024{% endblock %}
 
-    <strong>Keeping up with AI</strong>
-    
-    I don’t want this to be just another AI post. Rather, I want you to get a general “feel” for this, and how things are right now, in 2024. Things have been changing at quite a rapid pace (and this is just me peeking back at my undergrad days, which were barely half a decade ago). It’s easy to descend into a feedback of doom and gloom, but it’s vital to be able to navigate the ever-changing landscape, and I for one would like to have a cautiously optimistic view on it.
+{% block article_body %}
+{% filter linebreaks %}
+I don’t want this to be just another AI post. Rather, I want you to get a general “feel” for this, and how things are right now, in 2024. Things have been changing at quite a rapid pace (and this is just me peeking back at my undergrad days, which were barely half a decade ago). It’s easy to descend into a feedback of doom and gloom, but it’s vital to be able to navigate the ever-changing landscape, and I for one would like to have a cautiously optimistic view on it.
 
 This article by Tim Urban is arguably the best primer for AI that is out there now (even though it is like a decade old, I STRONGLY encourage you to read it). I’ll be borrowing heavily from his and Ray Kurzweil’s work.
 
@@ -34,7 +37,7 @@ OpenAI’s mission statement is getting to AGI. This is an absurd sentence (whic
 
 Unless you’re in the field, or actively following the progress, the only way you get to know something happened is via the media, or other channels, which at times could be nothing more than hype and incomplete information.
 
-Perception of growth/S-curve: 
+Perception of growth/S-curve:
 
 Perhaps no one loves exponential graphs more than Ray Kurzweil, and this is a collection of graphs from his book “The Singularity is near” that clearly shows us the pattern of growth across a lot of areas. However, we might end up perceiving it a bit differently.
 
@@ -141,5 +144,5 @@ Needless to say, tech, it’s implementation and the policies that we have play 
 I am working on shaping my own opinions to make sense of a life lived in this landscape (see my Pumping Lemma article), and I most likely will continue to form, shape and change my opinions. For now, I’d like to end it here with this thought:
 
 The train’s going to go.. you might as well be on it.
-    
+{% endfilter %}
 {% endblock %}

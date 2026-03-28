@@ -21,8 +21,10 @@ class BasicViewTests(SimpleTestCase):
                 self.assertTemplateUsed(response, template)
 
     def test_known_article_renders(self):
-        response = self.client.get("/articles/article1/")
-        self.assertEqual(response.status_code, 200)
+        for article_path in tuple(f"/articles/article{i}/" for i in range(1, 11)):
+            with self.subTest(article_path=article_path):
+                response = self.client.get(article_path)
+                self.assertEqual(response.status_code, 200)
 
     def test_unknown_article_returns_404(self):
         response = self.client.get("/articles/does-not-exist/")

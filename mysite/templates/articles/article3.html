@@ -1,10 +1,13 @@
-article1.html{% extends "mysite/header.html" %}
+{% extends "articles/base_saved_article.html" %}
 
-{% block content %}
+{% block article_title %}The parallelisms between pumping lemma and life{% endblock %}
+{% block article_source_url %}https://medium.com/@escapesequencemovies/the-parallelisms-between-pumping-lemma-and-life-ff70bbd06fbf{% endblock %}
+{% block article_source_label %}View original source on Medium{% endblock %}
+{% block article_published_label %}Published May 2024{% endblock %}
 
-    <strong>The parallelisms between pumping lemma and life</strong>
-    
-    I have been thinking a lot about this recently, especially as things have calmed down after graduation. There’s a good chance that this might seem very abstract to you (mixing math, linguistics and philosophy does it pretty well) but I genuinely think that there’s something here. Try and read this article slowly if you can.
+{% block article_body %}
+{% filter linebreaks %}
+I have been thinking a lot about this recently, especially as things have calmed down after graduation. There’s a good chance that this might seem very abstract to you (mixing math, linguistics and philosophy does it pretty well) but I genuinely think that there’s something here. Try and read this article slowly if you can.
 So, lets get this out of the way.. here is the formal definition of the pumping lemma. I won’t use it the way it’s used in Computer Science classes (majorly to prove/disprove stuff). I just want to take the core idea from it. I promise it doesn’t get any more technical than this:
 [Taken from Wikipedia]: For every long enough string in a regular language, there must be a middle section (y) that can be repeated (or pumped) any number of times to produce a string still in the language.
 [Taken from Wikipedia]: For every long enough string in a regular language, there must be a middle section (y) that can be repeated (or pumped) any number of times to produce a string still in the language.
@@ -51,5 +54,5 @@ As you can see, this idea can extend to a lot of things: skills, relationships, 
 So, going back to the main question before this: “Is this it?!?”. Like I said before, pragmatically, yes. Perhaps the best way to deal with this is just to develop subroutines, challenge and build on them time and again, and keep trying new things and pushing your comfort zone. This not only keeps the novelty alive, but tremendously boosts productivity.
 For me, this whole pumping lemma thing was a nice way to acknowledge and solidify some of my core beliefs. Hope this was helpful to you in some way. I’ll end it here with this quote:
 “Shameless consistency is the best kind of consistency.”
-    
+{% endfilter %}
 {% endblock %}

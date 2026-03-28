@@ -1,9 +1,13 @@
-article1.html{% extends "mysite/header.html" %}
+{% extends "articles/base_saved_article.html" %}
 
-{% block content %}
+{% block article_title %}Master’s Journey in the US as an International Student{% endblock %}
+{% block article_source_url %}https://medium.com/@escapesequencemovies/masters-journey-in-the-us-as-an-international-student-a047765f5b3e{% endblock %}
+{% block article_source_label %}View original source on Medium{% endblock %}
+{% block article_published_label %}Published Aug 2023{% endblock %}
 
-    <strong>Master’s Journey in the US as an International Student</strong>
-    DO NOT come if you cannot afford to spend the money.
+{% block article_body %}
+{% filter linebreaks %}
+DO NOT come if you cannot afford to spend the money.
 (imo) location matters much more than the rank of the uni.
 It’s much preferable to come with prior work experience.
 The idea here is to give a general, non-academic overview of what the whole master’s journey looks like in the United States. This comes from the perspective of a student coming from India to do Computer Science in the states during/post covid.
@@ -19,22 +23,22 @@ We come from a collective society, and it’s much too easy to get swayed by wha
 There are a lot of things that you end up hearing from other people (but as always, please do your own research). What follows in this section is a collection of things that I heard of when I was in this stage, and a few outlooks of this after coming through the other side.
 Trajectories
 Ideal/Best case scenario
-Lets say you get into a uni that has an estimated yearly cost of 70,000$. 
+Lets say you get into a uni that has an estimated yearly cost of 70,000$.
 
 So, the government is essentially saying that you need ~140,000$ to be here.
- -> Get admit & visa 
- -> Get a TA/RA asap, maybe get the fees waived 
- -> Get a summer internship 
- -> Clear the sems nicely, maybe graduate earlier 
+ -> Get admit & visa
+ -> Get a TA/RA asap, maybe get the fees waived
+ -> Get a summer internship
+ -> Clear the sems nicely, maybe graduate earlier
  -> Get a full-time job in the meantime, or get a PPO from the internship.
 
 In the best case, we only end up paying ~50,000$ with a lot of buffer.
 Average case scenario:
-We have to be more realistic than this. What ends up happening for almost 
-everyone is that they pay the tuition and health insurance from their funds, 
-and their living expenses from the part-time jobs in the uni. If they end up 
-getting an internship, that'll take care of the tuition fees for atleast a 
-semester, so there's some relief there, but we are looking at paying the 
+We have to be more realistic than this. What ends up happening for almost
+everyone is that they pay the tuition and health insurance from their funds,
+and their living expenses from the part-time jobs in the uni. If they end up
+getting an internship, that'll take care of the tuition fees for atleast a
+semester, so there's some relief there, but we are looking at paying the
 brunt of the expenses via your funds or loan.
 
 Not everone graduates on time, so planning out the timelines can get hard.
@@ -76,31 +80,22 @@ F-1 visa (i.e., student visa)
 I-20 (Imp: this is what keeps you in status, not your F-1!)
 I-94 (for your travel history)
 Drivers License/State ID
-SSN (Social Security Number, can’t work without this)
-W-2 (Tax-statement form)
-CPT (Curricular practical training, for when you are studying)
-OPT (Optional practical training, after you graduate)
+SSN (Social Security Number)
 EAD (Employment Authorization Document)
-Real ID (still some time for this to get enforced {May ‘25}, but just FYI)
-You must always carry your I-20 along with your passport. You can be here on an expired passport and a valid I-20 (but pls renew your passport before it expires. Here is how to do it).
-Tip: Get your Drivers License done here as quickly as you can, and if you don’t plan on driving (why?!?), get a State ID. Do not carry your passport to bars/clubs for heaven’s sake.
-Keep in mind that you are still on F-1 and you cannot work legally out of campus (apart from CPT/OPT). These cases are what ICE (immigration and customs enforcement) live for. It is simply not worth risking your whole status and being deported for a few extra hundred bucks.
-IMP: You need a “Travel Signature” from your university on your I-20 if you plan on travelling outside of the states. Do not forget it.
-Usually, international students work on CPT for their internships, and OPT for a year after graduation, and if you’re STEM, you can renew it for 2 additional years (for a total of 3 years). Remember, all during this period, you are still on F-1 and still a student. This is why many (heck, almost all) people look for companies that sponsor H-1B visa (which btw, is still a temporary worker status).
-If you are working in the US, you have to pay and file your taxes. You need to file Local, State and Federal Taxes. Universities sometimes provide codes to use softwares like Sprintax. IMP: Do not use TurboTax, it is not meant for non-citizens apparently.
-Fun Fact: the government here refers to us as “non-immigrant aliens authorized to work”. Yes, that is our actual legal status! Sometimes I wake up, remember this fact and choose violence. (metaphorically ofc)
-4. Moving and the actual uni experience
-I distinctly recall being told this as I was preparing to come here: “your first two months here are going to be the most difficult”. Naturally, it did not make much sense to me then, but ohmygod that statement is so true. If you are an incoming international student, even if you don’t take in anything else from this article, do not forget this.
-NOTE: FFS, DO NOT COME HERE IF YOU CANNOT AFFORD TO SPEND THE MONEY!
-It was told to me that perhaps the worst thing you can be in the US is poor, and it is as true as it is blunt.
-Naturally, adjusting to a new place takes time, and for some this could very well be the first time they would be living away from home and would have to do everything by themselves.
-Personally, my uni experience was a very formative one. You can read about it here. If you can, please connect with a mentor/senior who has gone through what you are about to go through.
-Academic competence
-As any senior would tell you, you actually have to study here. Get used to the American way of doing assignments properly (include references, mention whom you discussed with), quizzes, exams and with almost everything getting counted towards your grade. Even though professors may seem flexible here, they will not hesitate before giving you a bad grade. The consequences of academic disintegrity are severe, from you failing the class all the way to getting deported.
-And ffs talk to the professor! Desis/Indians are quite infamous to not participate.
-Cultural competence
-Perhaps one of the best experiences of coming to another country is the chance to interact with people from different regions and cultures.
-IMP (post-covid/’22): There is a HUGE influx of students coming in for masters, and more than 80–90% of the incoming batch would be desi/Indian. There is hardly anyone from other countries.
+Terms
+CPT
+OPT
+STEM OPT
+Reduced Course Load
+Grace Period
+4. Ground reality as a student
+Culture shock is a real thing, and it manifests in ways that you won’t expect.
+There are people who absolutely thrive in this environment, and some who do not. Both are valid outcomes.
+Cooking, cleaning, commuting, studying, job prep and trying to have a life all happen at the same time. It takes a while to get used to that.
+You really start valuing your time and energy differently once you are handling everything by yourself.
+Community matters a lot more than people acknowledge.
+I’ve found that students from the same country or region tend to stick together more, and that is quite understandable given how disorienting the whole experience is.
+At the same time, some of the best experiences I had came from meeting people from other countries.
 I have found this to be true here.
 It’s almost inevitable seeing people from the same place hang out together. It’s good to be part of a community, but be open to new experiences, and please be socially aware when you are in any group.
 Part time jobs
@@ -159,4 +154,5 @@ Won the race but lost your mind.
 Was it worth it afterall?”
 Yes.
 The past couple of years have been the most tumultuous of my life, but I got to experience so many things, and learn a lot of things about myself. It definitely is a make-or-break experience. Not easy for sure, but the feeling of coming through the other side makes it worth it.
+{% endfilter %}
 {% endblock %}

@@ -1,10 +1,13 @@
-{% extends "mysite/header.html" %}
+{% extends "articles/base_saved_article.html" %}
 
-{% block content %}
+{% block article_title %}On paper{% endblock %}
+{% block article_source_url %}https://dipengupta.substack.com/p/on-paper{% endblock %}
+{% block article_source_label %}View original source on Substack{% endblock %}
+{% block article_published_label %}Published Jun 2025{% endblock %}
 
-    <strong>On paper</strong>
-    
-  On paper, I ought to be doing good.. but why do I feel so inadequate, just like I’m not enough, or doing nearly as much as I possibly can, or the ever-present “fear of missing out”. Why am I still not content, despite hard proof that should make me feel otherwise?
+{% block article_body %}
+{% filter linebreaks %}
+On paper, I ought to be doing good.. but why do I feel so inadequate, just like I’m not enough, or doing nearly as much as I possibly can, or the ever-present “fear of missing out”. Why am I still not content, despite hard proof that should make me feel otherwise?
 
 This feeling recedes at times, but always surfaces back again.
 
@@ -68,5 +71,5 @@ The feeling of not-being-or-doing-the-best always creeps in, sometimes even from
 “Home is where your heart is but what a shame, cause everyone’s heart doesn’t beat the same”
 
 Green Day, 2004
-    
+{% endfilter %}
 {% endblock %}

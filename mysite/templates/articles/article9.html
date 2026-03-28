@@ -1,9 +1,12 @@
-{% extends "mysite/header.html" %}
+{% extends "articles/base_saved_article.html" %}
 
-{% block content %}
+{% block article_title %}Separating concerns{% endblock %}
+{% block article_source_url %}https://dipengupta.substack.com/p/separating-concerns{% endblock %}
+{% block article_source_label %}View original source on Substack{% endblock %}
+{% block article_published_label %}Published Sep 2025{% endblock %}
 
-    <strong>Separating concerns</strong>
-    
+{% block article_body %}
+{% filter linebreaks %}
 This will mostly be filled with links and sources of things that have held my attention for a long, long time. It’s like recording a song, where I want to get it all out so I can move to the next thing, and this will be like a memento of the time.
 
 This article’s title comes from Dijkstra’s separation of concerns, which is also a very popular design principle. It’s incredibly useful in near about every domain.
@@ -132,7 +135,6 @@ I can make a whole another post about this, and I can’t really distill this do
 
 
 
-
 amazing ideas with no context
 All of this gave me a whole new lens to learn how to navigate the landscape, and even empathise with people, knowing that not everyone can be at the high rungs all the time, and it’s hard-wired in us to do things that please the primitive mind.
 
@@ -162,5 +164,5 @@ Dealing with failure
 I’ll end this here with my quote:
 
 “Shameless consistency is the best kind of consistency”
-    
+{% endfilter %}
 {% endblock %}

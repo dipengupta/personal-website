@@ -1,10 +1,13 @@
-{% extends "mysite/header.html" %}
+{% extends "articles/base_saved_article.html" %}
 
-{% block content %}
+{% block article_title %}Pumping lemma follow-up{% endblock %}
+{% block article_source_url %}https://dipengupta.substack.com/p/pumping-lemma-follow-up{% endblock %}
+{% block article_source_label %}View original source on Substack{% endblock %}
+{% block article_published_label %}Published Dec 2024{% endblock %}
 
-    <strong>Pumping lemma follow-up</strong>
-    
-    It was nice to see how much my original pumping lemma post resonated with people, upon which I received lot of good feedback and critique. I still think that there is something quite substantial there, and with this follow-up I want to give more examples, and add on a few new themes.
+{% block article_body %}
+{% filter linebreaks %}
+It was nice to see how much my original pumping lemma post resonated with people, upon which I received lot of good feedback and critique. I still think that there is something quite substantial there, and with this follow-up I want to give more examples, and add on a few new themes.
 
 Quick recap:
 
@@ -96,5 +99,5 @@ I’ll need a whole another post to go over the impact this has over people (esp
 Okay, so I get that not all these themes have a super-tight connection with my initial proposition, but I think about these things quite a lot and it’s cathartic penning it down. And If others resonate with how I make sense of this, that’s the cherry on top. I know there will be other themes and refinements that come along as time passes by and I gain more experience, and I’ll keep on iterating on this thing that I have created.
 
 I’ll end it here with another Periphery quote: “Words mean nothing to fleeting youth”.
-    
+{% endfilter %}
 {% endblock %}

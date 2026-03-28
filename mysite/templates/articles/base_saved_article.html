@@ -1,0 +1,22 @@
+{% extends "mysite/header.html" %}
+
+{% block content %}
+
+<article class="mx-auto" style="max-width: 760px;">
+    <header class="mb-4">
+        <strong>{% block article_title %}{% endblock %}</strong>
+        {% block article_subtitle %}{% endblock %}
+        <p class="mb-0">
+            <a href="{% block article_source_url %}{% endblock %}" target="_blank" rel="noopener noreferrer">
+                {% block article_source_label %}View original source{% endblock %}
+            </a>
+            <span class="text-muted"> | {% block article_published_label %}{% endblock %}</span>
+        </p>
+    </header>
+
+    <div class="saved-article-copy">
+        {% block article_body %}{% endblock %}
+    </div>
+</article>
+
+{% endblock %}
