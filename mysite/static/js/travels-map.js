@@ -18,6 +18,13 @@
         mug: "#c75b12"
     };
 
+    var mugTypeColors = {
+        "State":   "#c75b12",
+        "City":    "#2952a3",
+        "Country": "#7b2d8b",
+        "Special": "#2e8b57"
+    };
+
     var defaultView = {
         center: [40.85, -77.8], // Start near PA as requested; users can pan/zoom out.
         zoom: 5
@@ -61,7 +68,7 @@
         var notesHtml = "";
 
         if (point.kind === "mug") {
-            subtitleLine = point.gifted_by ? ("by " + escapeHtml(point.gifted_by)) : "Starbucks mug";
+            subtitleLine = point.gifted_by ? ("by " + escapeHtml(point.gifted_by)) : escapeHtml(point.mug_type || "Mug") + " mug";
         } else if (notes.length === 1) {
             subtitleLine = escapeHtml(notes[0]);
         } else if (notes.length > 1) {
@@ -99,7 +106,7 @@
         var photoHtml = "";
 
         if (point.kind === "mug") {
-            line = point.gifted_by ? ("by " + escapeHtml(point.gifted_by)) : "Starbucks mug";
+            line = point.gifted_by ? ("by " + escapeHtml(point.gifted_by)) : escapeHtml(point.mug_type || "Mug") + " mug";
         } else if (notes.length === 1) {
             line = escapeHtml(notes[0]);
         } else if (notes.length > 1) {
@@ -168,11 +175,14 @@
         var latOffset = (used % 3) * 0.22;
         var lngOffset = (kind === "mug" ? 0.25 : -0.18) + (Math.floor(used / 3) * 0.16);
 
+        var pinColor = kind === "mug"
+            ? (mugTypeColors[point.mug_type] || colors.mug)
+            : colors[kind];
         var marker = L.circleMarker([point.lat + latOffset, point.lng + lngOffset], {
             radius: kind === "mug" ? 7 : 6.5,
-            color: colors[kind],
+            color: pinColor,
             weight: 2,
-            fillColor: colors[kind],
+            fillColor: pinColor,
             fillOpacity: 0.82
         });
 

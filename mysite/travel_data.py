@@ -67,10 +67,15 @@ STATE_COORDS = {
     "North Carolina": (35.7796, -78.6382),
     "New Jersey": (40.2206, -74.7699),
     "Pennsylvania": (40.2732, -76.8867),
+    "Georgia": (32.1656, -82.9001),
+    "Iowa": (42.0115, -93.2105),
 }
 
 CITY_COORDS = {
     "Pittsburgh": (40.4406, -79.9959),
+    "Indianapolis": (39.7684, -86.1581),
+    "Atlanta": (33.7490, -84.3880),
+    "Hartford": (41.7637, -72.6851),
     "Chicago": (41.8781, -87.6298),
     "Miami": (25.7617, -80.1918),
     "Mumbai": (19.0760, 72.8777),
@@ -335,6 +340,26 @@ VISITED_LOCATIONS = [
         "state": "Michigan",
         "country": "USA",
     },
+    {
+        "title": "Atlanta, Georgia, USA",
+        "lat": CITY_COORDS["Atlanta"][0],
+        "lng": CITY_COORDS["Atlanta"][1],
+        "subtitle": "Visited Places",
+        "notes": ["Atlanta trip with Octavium"],
+        "state": "Georgia",
+        "city": "Atlanta",
+        "country": "USA",
+    },
+    {
+        "title": "Hartford, Connecticut, USA",
+        "lat": CITY_COORDS["Hartford"][0],
+        "lng": CITY_COORDS["Hartford"][1],
+        "subtitle": "Visited Places",
+        "notes": ["Visiting Kaliappan"],
+        "state": "Connecticut",
+        "city": "Hartford",
+        "country": "USA",
+    },
 ]
 
 
@@ -368,6 +393,8 @@ MUG_STATES = [
     ("North Carolina", "Sanika"),
     ("New Jersey", "Advait"),
     ("Pennsylvania", ""),
+    ("Georgia", ""),
+    ("Iowa", "Michael"),
 ]
 
 MUG_CITIES = [
@@ -386,11 +413,32 @@ MUG_CITIES = [
     ("Savannah", "Lohith", "USA", "Georgia"),
     ("Athens", "Michael", "Greece", ""),
     ("Myrtle Beach", "Tapas and Kirti", "USA", "South Carolina"),
+    ("Indianapolis", "Michael", "USA", "Indiana"),
 ]
 
 MUG_COUNTRIES = [
     ("France", "Zaid"),
     ("England", "Puneeth's Sister"),
+]
+
+MUG_SPECIALS = [
+    # Parents' European specials
+    {"title": "Madrid, Spain",               "gifted_by": "Parents",                     "lat": 40.4168, "lng": -3.7038},
+    {"title": "Brussels, Belgium",           "gifted_by": "Parents",                     "lat": 50.8503, "lng":  4.3517},
+    {"title": "Italy",                       "gifted_by": "Parents",                     "lat": 41.8719, "lng": 12.5674},
+    {"title": "Rome",                        "gifted_by": "Parents",                     "lat": 41.9028, "lng": 12.4964},
+    {"title": "Germany",                     "gifted_by": "Parents",                     "lat": 51.1657, "lng": 10.4515},
+    {"title": "Jungfrauregion, Switzerland", "gifted_by": "Parents",                     "lat": 46.5389, "lng":  7.9812},
+    # Other specials
+    {"title": "Google",                      "gifted_by": "Shreya",               "lat": 37.4220, "lng": -122.0841},
+    {"title": "Arizona State University",    "gifted_by": "CG",                   "lat": 33.4255, "lng": -111.9400},
+    {"title": "Johns Hopkins University",    "gifted_by": "Aavesh",               "lat": 39.3299, "lng": -76.6205},
+    {"title": "Tiny PA Mug",                 "gifted_by": "Emily",                "lat": 40.2732, "lng": -76.8867},
+    {"title": "Times Square, NYC",           "gifted_by": "",                     "lat": 40.7580, "lng": -73.9855},
+    {"title": "Penn State University",       "gifted_by": "Devang",               "lat": 40.7982, "lng": -77.8599},
+    {"title": "2023 Graduation Mug",         "gifted_by": "Puneeth and Roshnee",  "lat": 40.2095, "lng": -76.7492},
+    {"title": "NY Starbucks Reserve",        "gifted_by": "",                     "lat": 40.7200, "lng": -74.0060},
+    {"title": "Stateless Holiday Special",   "gifted_by": "Tapas",                "lat": 38.9784, "lng": -76.4922},
 ]
 
 
@@ -421,7 +469,7 @@ def build_travel_points():
                 title=f"{state_name}, USA",
                 lat=lat,
                 lng=lng,
-                subtitle="Starbucks Mug Collection",
+                subtitle="Mug Collection",
                 gifted_by=gifted_by,
                 mug_type="State",
                 state=state_name,
@@ -437,7 +485,7 @@ def build_travel_points():
                 title=city_name,
                 lat=lat,
                 lng=lng,
-                subtitle="Starbucks Mug Collection",
+                subtitle="Mug Collection",
                 gifted_by=gifted_by,
                 mug_type="City",
                 city=city_name,
@@ -454,10 +502,23 @@ def build_travel_points():
                 title=country_name,
                 lat=lat,
                 lng=lng,
-                subtitle="Starbucks Mug Collection",
+                subtitle="Mug Collection",
                 gifted_by=gifted_by,
                 mug_type="Country",
                 country=country_name,
+            )
+        )
+
+    for item in MUG_SPECIALS:
+        points.append(
+            _point(
+                kind="mug",
+                title=item["title"],
+                lat=item["lat"],
+                lng=item["lng"],
+                subtitle="Mug Collection",
+                gifted_by=item["gifted_by"],
+                mug_type="Special",
             )
         )
 
