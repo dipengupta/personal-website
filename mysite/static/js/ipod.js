@@ -384,6 +384,39 @@
 		if (np) { np.classList.toggle("is-paused", !isPlaying); }
 	}
 
+	// ---- Haptics -----------------------------------------------------------
+	// Two devices, two mechanisms:
+	//   - Android (and other Vibration-API browsers) honour navigator.vibrate.
+	//   - iOS Safari ignores navigator.vibrate entirely; the only way to fire a
+	//     system haptic from a page is to toggle an <input switch> (iOS 17.4+)
+	//     within a user gesture. We keep a hidden one off-screen and "click" it.
+	var hapticSwitch = null;
+	(function initHaptics() {
+		var label = document.createElement("label");
+		label.setAttribute("aria-hidden", "true");
+		label.style.cssText = "position:absolute;width:1px;height:1px;" +
+			"margin:-1px;padding:0;border:0;overflow:hidden;" +
+			"clip:rect(0 0 0 0);opacity:0;pointer-events:none;";
+		var input = document.createElement("input");
+		input.type = "checkbox";
+		input.setAttribute("switch", ""); // iOS-only attribute; harmless elsewhere
+		input.tabIndex = -1;
+		label.appendChild(input);
+		document.body.appendChild(label);
+		hapticSwitch = label;
+	})();
+
+	// Fire a short tap. Call this only from within a user gesture (a click /
+	// keydown handler), otherwise both mechanisms are no-ops by design.
+	function haptic(ms) {
+		if (navigator.vibrate) {
+			try { navigator.vibrate(ms || 10); } catch (e) {}
+		}
+		if (hapticSwitch) {
+			try { hapticSwitch.click(); } catch (e) {}
+		}
+	}
+
 	// ---- Wheel controls ----------------------------------------------------
 	function handleAction(actionName) {
 		var view = currentView();
@@ -429,13 +462,14 @@
 	// Button clicks on the wheel (closest() climbs from any inner <svg>/<path>).
 	wheel.addEventListener("click", function (e) {
 		var btn = e.target.closest("[data-action]");
-		if (btn) { handleAction(btn.getAttribute("data-action")); }
+		if (btn) { haptic(12); handleAction(btn.getAttribute("data-action")); }
 	});
 
 	// Mouse-wheel over the device scrolls the current list.
 	device.addEventListener("wheel", function (e) {
 		if (currentView().type !== "list") return;
 		e.preventDefault();
+		haptic(6);
 		handleAction(e.deltaY > 0 ? "scroll-down" : "scroll-up");
 	}, { passive: false });
 
@@ -470,6 +504,7 @@
 		dragAccum += diff;
 		dragAngle = a;
 		while (Math.abs(dragAccum) >= STEP_DEG) {
+			haptic(6); // a tick per step, like a real click wheel
 			if (dragAccum > 0) { handleAction("scroll-down"); dragAccum -= STEP_DEG; }
 			else { handleAction("scroll-up"); dragAccum += STEP_DEG; }
 		}
@@ -501,6 +536,7 @@
 		var tag = (e.target.tagName || "").toLowerCase();
 		if (tag === "input" || tag === "textarea" || e.target.isContentEditable) return;
 		e.preventDefault();
+		haptic(10);
 		handleAction(action);
 	});
 
