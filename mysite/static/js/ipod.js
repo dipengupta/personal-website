@@ -607,6 +607,23 @@
 		}, 150);
 	}
 
+	// ---- TEMPORARY haptics diagnostic --------------------------------------
+	// Remove this block (and the #hapticDiag panel in the template) once we've
+	// confirmed how haptics behave on the device.
+	(function wireHapticDiag() {
+		var status = document.getElementById("hapticStatus");
+		var synthBtn = document.getElementById("hapticSyntheticBtn");
+		if (status) {
+			status.textContent =
+				"navigator.vibrate: " + (navigator.vibrate ? "yes" : "no") +
+				" · UA: " + navigator.userAgent;
+		}
+		if (synthBtn) {
+			synthBtn.addEventListener("click", function () { haptic(15); });
+		}
+		// The real switch needs no JS — toggling it natively is the OS test.
+	})();
+
 	// ---- Boot --------------------------------------------------------------
 	pushView(buildMainMenu());
 	if (device && device.focus) { device.focus(); }
