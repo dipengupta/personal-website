@@ -40,18 +40,25 @@
 			</div>
 		</div>
 
+		<!-- Each control is a <label> wrapping a hidden <input switch>. A real
+		     tap toggles the switch, which fires the native iOS haptic (iOS
+		     17.4+); navigator.vibrate covers Android. ipod.js listens for the
+		     toggle's "change" event to run the action. -->
 		<div class="ipod-wheel" id="ipodWheel">
-			<button type="button" class="wheel-btn wheel-menu" data-action="menu">MENU</button>
-			<button type="button" class="wheel-btn wheel-prev" data-action="prev" aria-label="Previous track">
+			<label class="wheel-btn wheel-menu" role="button" aria-label="Menu">MENU<input type="checkbox" switch class="wheel-haptic" data-action="menu" tabindex="-1" aria-hidden="true"></label>
+			<label class="wheel-btn wheel-prev" role="button" aria-label="Previous track">
 				<svg class="wheel-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 6h2v12H7z"/><path d="M20 6v12l-9-6z"/></svg>
-			</button>
-			<button type="button" class="wheel-btn wheel-next" data-action="next" aria-label="Next track">
+				<input type="checkbox" switch class="wheel-haptic" data-action="prev" tabindex="-1" aria-hidden="true">
+			</label>
+			<label class="wheel-btn wheel-next" role="button" aria-label="Next track">
 				<svg class="wheel-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6h2v12h-2z"/><path d="M4 6v12l9-6z"/></svg>
-			</button>
-			<button type="button" class="wheel-btn wheel-play" data-action="playpause" aria-label="Play or pause">
+				<input type="checkbox" switch class="wheel-haptic" data-action="next" tabindex="-1" aria-hidden="true">
+			</label>
+			<label class="wheel-btn wheel-play" role="button" aria-label="Play or pause">
 				<svg class="wheel-icon wheel-icon-play" viewBox="0 0 28 24" aria-hidden="true"><path d="M4 5l9 7-9 7z"/><path d="M17 5h3v14h-3zM22 5h3v14h-3z"/></svg>
-			</button>
-			<button type="button" class="wheel-center" id="wheelCenter" data-action="select" aria-label="Select"></button>
+				<input type="checkbox" switch class="wheel-haptic" data-action="playpause" tabindex="-1" aria-hidden="true">
+			</label>
+			<label class="wheel-center" id="wheelCenter" role="button" aria-label="Select"><input type="checkbox" switch class="wheel-haptic" data-action="select" tabindex="-1" aria-hidden="true"></label>
 		</div>
 	</div>
 
@@ -59,36 +66,6 @@
 		Keys: &uarr;/&darr; scroll &middot; Enter select &middot; M / Backspace back
 		&middot; Space play/pause &middot; &larr;/&rarr; prev/next track
 	</p>
-
-	<!-- TEMPORARY haptics diagnostic. Remove once we've confirmed behaviour. -->
-	<div id="hapticDiag" style="max-width:420px;margin:1.5rem auto;padding:1rem;
-	     border:1px dashed #999;border-radius:8px;text-align:center;font-size:14px;">
-		<strong>Haptics test (temporary)</strong>
-		<p style="margin:.75rem 0;">
-			1. Toggle this <em>real</em> switch with your finger:<br>
-			<label style="display:inline-block;margin-top:.5rem;">
-				<input type="checkbox" switch id="hapticRealSwitch">
-			</label>
-		</p>
-		<p style="margin:.75rem 0;">
-			2. Then tap this (fires our synthetic code):<br>
-			<button type="button" id="hapticSyntheticBtn"
-			        style="margin-top:.5rem;padding:.4rem .9rem;">Test synthetic tap</button>
-		</p>
-		<p style="margin:.75rem 0;">
-			3. Tap this button — it looks normal but is a <em>real</em> switch
-			that's hidden. This is the deciding test:<br>
-			<label id="hapticHiddenLabel" style="display:inline-block;
-			       margin-top:.5rem;padding:.4rem .9rem;border:1px solid #999;
-			       border-radius:6px;cursor:pointer;user-select:none;">
-				Tap me (hidden switch)
-				<input type="checkbox" switch
-				       style="position:absolute;opacity:0;width:0;height:0;
-				              pointer-events:none;">
-			</label>
-		</p>
-		<div id="hapticStatus" style="margin-top:.5rem;color:#666;"></div>
-	</div>
 
 	<!-- Now-playing info (title + description) shown below the device, where
 	     there's room to read it. Updated as you play things. -->

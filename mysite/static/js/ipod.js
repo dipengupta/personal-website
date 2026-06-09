@@ -386,32 +386,19 @@
 
 	// ---- Haptics -----------------------------------------------------------
 	// Two devices, two mechanisms:
-	//   - Android (and other Vibration-API browsers) honour navigator.vibrate.
-	//   - iOS Safari ignores navigator.vibrate entirely; the only way to fire a
-	//     system haptic from a page is to toggle an <input switch> (iOS 17.4+)
-	//     inside a user gesture. The proven recipe (Gavin Nelson's ios-haptics)
-	//     is to create a fresh display:none switch, click it, and remove it on
-	//     every trigger — reusing one hidden element does NOT reliably fire it.
-	function iosHaptic() {
-		var label = document.createElement("label");
-		label.setAttribute("aria-hidden", "true");
-		label.style.display = "none";
-		var input = document.createElement("input");
-		input.type = "checkbox";
-		input.setAttribute("switch", ""); // iOS-only attribute; harmless elsewhere
-		label.appendChild(input);
-		document.head.appendChild(label);
-		label.click();
-		document.head.removeChild(label);
-	}
-
-	// Fire a short tap. Call this only from within a user gesture (a click /
-	// keydown handler), otherwise both mechanisms are no-ops by design.
-	function haptic(ms) {
+	//   - Android (and other Vibration-API browsers) honour navigator.vibrate;
+	//     vibrate() below covers them.
+	//   - iOS Safari ignores navigator.vibrate. The only thing that fires a
+	//     system haptic there is a *genuine* user toggle of an <input switch>
+	//     (iOS 17.4+) — a programmatic .click() is not trusted and stays silent.
+	//     So the wheel buttons are <label>s wrapping a hidden switch (see the
+	//     template): the real tap toggles it and iOS buzzes natively, no JS
+	//     needed. We only add the Android vibrate on top of that, in the
+	//     change handler below.
+	function vibrate(ms) {
 		if (navigator.vibrate) {
 			try { navigator.vibrate(ms || 10); } catch (e) {}
 		}
-		try { iosHaptic(); } catch (e) {}
 	}
 
 	// ---- Wheel controls ----------------------------------------------------
@@ -456,17 +443,25 @@
 		}
 	}
 
-	// Button clicks on the wheel (closest() climbs from any inner <svg>/<path>).
-	wheel.addEventListener("click", function (e) {
-		var btn = e.target.closest("[data-action]");
-		if (btn) { haptic(12); handleAction(btn.getAttribute("data-action")); }
+	// Button presses on the wheel. Each control is a <label> wrapping a hidden
+	// <input switch>; tapping it toggles the switch, which (a) fires the native
+	// iOS haptic on its own and (b) fires this "change" event exactly once
+	// (using click would double-fire — label click + the input's own click).
+	wheel.addEventListener("change", function (e) {
+		var input = e.target.closest(".wheel-haptic");
+		if (!input) return;
+		vibrate(12); // Android; iOS already buzzed from the real toggle
+		handleAction(input.getAttribute("data-action"));
+		// Keep keyboard focus on the device, not the (hidden) checkbox, so the
+		// document-level key handler stays in charge and Space doesn't re-toggle.
+		if (device && device.focus) { device.focus(); }
 	});
 
 	// Mouse-wheel over the device scrolls the current list.
 	device.addEventListener("wheel", function (e) {
 		if (currentView().type !== "list") return;
 		e.preventDefault();
-		haptic(6);
+		vibrate(6);
 		handleAction(e.deltaY > 0 ? "scroll-down" : "scroll-up");
 	}, { passive: false });
 
@@ -501,7 +496,7 @@
 		dragAccum += diff;
 		dragAngle = a;
 		while (Math.abs(dragAccum) >= STEP_DEG) {
-			haptic(6); // a tick per step, like a real click wheel
+			vibrate(6); // a tick per step, like a real click wheel (Android)
 			if (dragAccum > 0) { handleAction("scroll-down"); dragAccum -= STEP_DEG; }
 			else { handleAction("scroll-up"); dragAccum += STEP_DEG; }
 		}
@@ -533,7 +528,7 @@
 		var tag = (e.target.tagName || "").toLowerCase();
 		if (tag === "input" || tag === "textarea" || e.target.isContentEditable) return;
 		e.preventDefault();
-		haptic(10);
+		vibrate(10);
 		handleAction(action);
 	});
 
@@ -606,23 +601,6 @@
 			else if (tries > 40) { clearInterval(scPoll); }
 		}, 150);
 	}
-
-	// ---- TEMPORARY haptics diagnostic --------------------------------------
-	// Remove this block (and the #hapticDiag panel in the template) once we've
-	// confirmed how haptics behave on the device.
-	(function wireHapticDiag() {
-		var status = document.getElementById("hapticStatus");
-		var synthBtn = document.getElementById("hapticSyntheticBtn");
-		if (status) {
-			status.textContent =
-				"navigator.vibrate: " + (navigator.vibrate ? "yes" : "no") +
-				" · UA: " + navigator.userAgent;
-		}
-		if (synthBtn) {
-			synthBtn.addEventListener("click", function () { haptic(15); });
-		}
-		// The real switch needs no JS — toggling it natively is the OS test.
-	})();
 
 	// ---- Boot --------------------------------------------------------------
 	pushView(buildMainMenu());

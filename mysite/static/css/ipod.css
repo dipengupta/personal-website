@@ -290,6 +290,9 @@
 
 .wheel-btn {
 	position: absolute;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
 	border: none;
 	background: transparent;
 	color: #6c727b;
@@ -297,8 +300,20 @@
 	font-weight: 700;
 	letter-spacing: 0.04em;
 	padding: 6px 10px;
+	margin: 0;
 	cursor: pointer;
 	line-height: 1;
+}
+
+/* The wheel controls are <label>s wrapping a hidden <input switch>; the switch
+   exists only so a real tap fires the native iOS haptic (see sect_ipod.html). */
+.wheel-haptic {
+	position: absolute;
+	width: 0;
+	height: 0;
+	opacity: 0;
+	margin: 0;
+	pointer-events: none;
 }
 .wheel-btn:hover { color: #3c424b; }
 .wheel-btn:active { color: #1d2530; }
