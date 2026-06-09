@@ -389,22 +389,21 @@
 	//   - Android (and other Vibration-API browsers) honour navigator.vibrate.
 	//   - iOS Safari ignores navigator.vibrate entirely; the only way to fire a
 	//     system haptic from a page is to toggle an <input switch> (iOS 17.4+)
-	//     within a user gesture. We keep a hidden one off-screen and "click" it.
-	var hapticSwitch = null;
-	(function initHaptics() {
+	//     inside a user gesture. The proven recipe (Gavin Nelson's ios-haptics)
+	//     is to create a fresh display:none switch, click it, and remove it on
+	//     every trigger — reusing one hidden element does NOT reliably fire it.
+	function iosHaptic() {
 		var label = document.createElement("label");
 		label.setAttribute("aria-hidden", "true");
-		label.style.cssText = "position:absolute;width:1px;height:1px;" +
-			"margin:-1px;padding:0;border:0;overflow:hidden;" +
-			"clip:rect(0 0 0 0);opacity:0;pointer-events:none;";
+		label.style.display = "none";
 		var input = document.createElement("input");
 		input.type = "checkbox";
 		input.setAttribute("switch", ""); // iOS-only attribute; harmless elsewhere
-		input.tabIndex = -1;
 		label.appendChild(input);
-		document.body.appendChild(label);
-		hapticSwitch = label;
-	})();
+		document.head.appendChild(label);
+		label.click();
+		document.head.removeChild(label);
+	}
 
 	// Fire a short tap. Call this only from within a user gesture (a click /
 	// keydown handler), otherwise both mechanisms are no-ops by design.
@@ -412,9 +411,7 @@
 		if (navigator.vibrate) {
 			try { navigator.vibrate(ms || 10); } catch (e) {}
 		}
-		if (hapticSwitch) {
-			try { hapticSwitch.click(); } catch (e) {}
-		}
+		try { iosHaptic(); } catch (e) {}
 	}
 
 	// ---- Wheel controls ----------------------------------------------------
