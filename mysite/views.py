@@ -10,7 +10,14 @@ from django.http import Http404
 from django.shortcuts import render
 from django.core.cache import cache
 from django.template import TemplateDoesNotExist
+from xml.etree import ElementTree
 from .travel_data import travel_page_context
+from .music_data import (
+    YOUTUBE_CHANNEL_ID,
+    YOUTUBE_FALLBACK_VIDEOS,
+    YOUTUBE_VIDEOS,
+    ipod_page_context,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -162,6 +169,100 @@ def _fetch_recent_tweets(username, max_results=30):
 
     return tweets, ""
 
+
+def _fetch_youtube_rss(channel_id):
+    """
+    Fetch the latest uploads from the keyless Atom feed at
+    https://www.youtube.com/feeds/videos.xml?channel_id=... (newest first, ~15).
+    Returns a list of {"videoId", "title", "description", "date"} or [] on error.
+    """
+    feed_url = (
+        "https://www.youtube.com/feeds/videos.xml?channel_id="
+        f"{parse.quote(channel_id)}"
+    )
+    req = urlrequest.Request(
+        feed_url, headers={"User-Agent": "personal-site-ipod-page"}
+    )
+    try:
+        with urlrequest.urlopen(req, timeout=8) as response:
+            raw = response.read()
+    except (error.URLError, TimeoutError) as exc:
+        logger.warning("YouTube feed fetch failed: %s", exc)
+        return []
+
+    ns = {
+        "atom": "http://www.w3.org/2005/Atom",
+        "yt": "http://www.youtube.com/xml/schemas/2015",
+        "media": "http://search.yahoo.com/mrss/",
+    }
+    try:
+        root = ElementTree.fromstring(raw)
+    except ElementTree.ParseError as exc:
+        logger.warning("YouTube feed parse failed: %s", exc)
+        return []
+
+    entries = []
+    for entry in root.findall("atom:entry", ns):
+        video_id_el = entry.find("yt:videoId", ns)
+        title_el = entry.find("atom:title", ns)
+        desc_el = entry.find("media:group/media:description", ns)
+        pub_el = entry.find("atom:published", ns)
+        if video_id_el is None or not (video_id_el.text or "").strip():
+            continue
+        title = (title_el.text or "").strip() if title_el is not None else ""
+        description = (desc_el.text or "").strip() if desc_el is not None else ""
+        date = (pub_el.text or "")[:10] if pub_el is not None else ""
+        entries.append({
+            "videoId": video_id_el.text.strip(),
+            "title": title or "Untitled",
+            "description": description,
+            "date": date,
+        })
+    return entries
+
+
+def _fetch_youtube_uploads(channel_id):
+    """
+    Full upload list, newest first: the static archive (all videos, dated) with
+    any brand-new uploads from the live RSS feed merged on top, and RSS
+    descriptions folded into matching archive entries. Cached daily.
+    """
+    cache_key = f"youtube_uploads_{channel_id}"
+    cached = cache.get(cache_key)
+    if cached:
+        return cached
+
+    # Archive is the base; key by videoId so RSS can enrich / extend it.
+    merged = {}
+    for video in YOUTUBE_VIDEOS:
+        merged[video["videoId"]] = {
+            "videoId": video["videoId"],
+            "title": video.get("title", "Untitled"),
+            "description": video.get("description", ""),
+            "date": video.get("date", ""),
+        }
+
+    for entry in (_fetch_youtube_rss(channel_id) if channel_id else []):
+        existing = merged.get(entry["videoId"])
+        if existing:
+            existing["description"] = entry["description"] or existing["description"]
+            existing["date"] = existing["date"] or entry["date"]
+        else:
+            merged[entry["videoId"]] = entry  # brand-new upload since last scrape
+
+    videos = sorted(
+        merged.values(), key=lambda v: v.get("date") or "", reverse=True
+    )
+    if not videos:
+        return list(YOUTUBE_FALLBACK_VIDEOS)
+
+    # Cache until the next daily refresh (07:00 UTC), matching the tweet cadence.
+    now_utc = datetime.now(timezone.utc)
+    ttl = int((_next_daily_refresh_utc(now_utc, 7) - now_utc).total_seconds())
+    cache.set(cache_key, videos, timeout=max(ttl, 60))
+    return videos
+
+
 def displayHomePage(request):
     home_images = _load_static_images_from_dir(
         subdir="home",
@@ -184,6 +285,11 @@ def displayAcademicPage(request):
 
 def displayMusicPage(request):
     return render(request, 'mysite/sect_music.html')
+
+def displayIpodPage(request):
+    context = ipod_page_context()
+    context["youtube_videos"] = _fetch_youtube_uploads(YOUTUBE_CHANNEL_ID)
+    return render(request, 'mysite/sect_ipod.html', context)
 
 def displayArticlesPage(request):
     return render(request, 'mysite/sect_articles.html')

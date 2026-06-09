@@ -9,3 +9,6 @@ mysite/__pycache__/
 mysite/static/images/_originals/
 image-workbench/
 tmp/image-exports/
+
+django_cache
+website
