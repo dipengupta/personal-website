@@ -1,0 +1,93 @@
+{% extends "mysite/header.html" %}
+{% load static %}
+
+{% block extra_head %}
+	<link rel="stylesheet" href="{% static 'css/ipod.css' %}" type="text/css" />
+{% endblock %}
+
+{% block content %}
+
+<div class="ipod-page">
+
+	<div class="ipod-intro text-center">
+		<h1 class="ipod-title">iPod View</h1>
+		<p class="text-muted ipod-subtitle">
+			Click the wheel (or use your keyboard) to browse my reels, videos and tracks.
+			Music keeps playing while you scroll around.
+		</p>
+	</div>
+
+	<!-- The device. The screen is a live HTML region; the wheel buttons are real
+	     clickable elements. The two media players live OUTSIDE the screen so that
+	     browsing the menus never tears them down (audio keeps playing). -->
+	<div class="ipod-device" id="ipod" role="application"
+	     aria-label="Interactive iPod Classic" tabindex="0">
+
+		<div class="ipod-screen" id="ipodScreen">
+			<div class="ipod-statusbar">
+				<span class="ipod-statusbar-title" id="ipodStatusTitle">Dipen's iPod</span>
+				<span class="ipod-nowplaying-flag" id="ipodNowPlayingFlag" hidden>&#9654;</span>
+			</div>
+			<div class="ipod-screen-stage">
+				<!-- Persistent YouTube video layer. It is created once at full
+				     size and never moved (moving an iframe reloads it). It sits
+				     behind the menu so audio keeps playing while you browse, and
+				     is raised above the menu only while you're watching. -->
+				<div class="ipod-yt-stage" id="ytStage"><div id="ytPlayer"></div></div>
+				<div class="ipod-screen-body" id="ipodScreenBody">
+					<!-- Rendered by ipod.js -->
+				</div>
+			</div>
+		</div>
+
+		<div class="ipod-wheel" id="ipodWheel">
+			<button type="button" class="wheel-btn wheel-menu" data-action="menu">MENU</button>
+			<button type="button" class="wheel-btn wheel-prev" data-action="prev" aria-label="Previous track">
+				<svg class="wheel-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 6h2v12H7z"/><path d="M20 6v12l-9-6z"/></svg>
+			</button>
+			<button type="button" class="wheel-btn wheel-next" data-action="next" aria-label="Next track">
+				<svg class="wheel-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6h2v12h-2z"/><path d="M4 6v12l9-6z"/></svg>
+			</button>
+			<button type="button" class="wheel-btn wheel-play" data-action="playpause" aria-label="Play or pause">
+				<svg class="wheel-icon wheel-icon-play" viewBox="0 0 28 24" aria-hidden="true"><path d="M4 5l9 7-9 7z"/><path d="M17 5h3v14h-3zM22 5h3v14h-3z"/></svg>
+			</button>
+			<button type="button" class="wheel-center" id="wheelCenter" data-action="select" aria-label="Select"></button>
+		</div>
+	</div>
+
+	<p class="ipod-keys-hint text-muted text-center">
+		Keys: &uarr;/&darr; scroll &middot; Enter select &middot; M / Backspace back
+		&middot; Space play/pause &middot; &larr;/&rarr; prev/next track
+	</p>
+
+	<!-- Now-playing info (title + description) shown below the device, where
+	     there's room to read it. Updated as you play things. -->
+	<div class="ipod-info" id="ipodInfo" hidden>
+		<div class="ipod-info-source" id="ipodInfoSource"></div>
+		<div class="ipod-info-title" id="ipodInfoTitle"></div>
+		<div class="ipod-info-date" id="ipodInfoDate" hidden></div>
+		<div class="ipod-info-desc" id="ipodInfoDesc"></div>
+	</div>
+
+	<!-- Persistent SoundCloud audio player (no UI needed). -->
+	<div class="ipod-players" aria-hidden="true">
+		<iframe id="scWidget"
+			title="SoundCloud player"
+			scrolling="no" frameborder="no" allow="autoplay"
+			src="">
+		</iframe>
+	</div>
+
+</div>
+
+{{ youtube_videos|json_script:"ipod-youtube-data" }}
+{{ instagram_reels|json_script:"ipod-instagram-data" }}
+{{ soundcloud_user_url|json_script:"ipod-soundcloud-url" }}
+
+{% endblock %}
+
+{% block extra_scripts %}
+	<script src="https://www.youtube.com/iframe_api"></script>
+	<script src="https://w.soundcloud.com/player/api.js"></script>
+	<script src="{% static 'js/ipod.js' %}"></script>
+{% endblock %}
