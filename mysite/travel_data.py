@@ -72,6 +72,7 @@ STATE_COORDS = {
 }
 
 CITY_COORDS = {
+    "Anchorage": (61.2181, -149.9003),
     "Pittsburgh": (40.4406, -79.9959),
     "Indianapolis": (39.7684, -86.1581),
     "Atlanta": (33.7490, -84.3880),
@@ -358,6 +359,26 @@ VISITED_LOCATIONS = [
         "notes": ["Visiting Kaliappan"],
         "state": "Connecticut",
         "city": "Hartford",
+        "country": "USA",
+    },
+    {
+        "title": "Anchorage, Alaska, USA",
+        "lat": CITY_COORDS["Anchorage"][0],
+        "lng": CITY_COORDS["Anchorage"][1],
+        "subtitle": "Visited Places",
+        "notes": ["Anchorage, AK"],
+        "state": "Alaska",
+        "city": "Anchorage",
+        "country": "USA",
+    },
+    {
+        "title": "Chicago, Illinois, USA",
+        "lat": CITY_COORDS["Chicago"][0],
+        "lng": CITY_COORDS["Chicago"][1],
+        "subtitle": "Visited Places",
+        "notes": ["Chicago, IL"],
+        "state": "Illinois",
+        "city": "Chicago",
         "country": "USA",
     },
 ]

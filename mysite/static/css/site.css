@@ -25,18 +25,18 @@ html[data-theme="light"] {
 
 html[data-theme="dark"] {
     color-scheme: dark;
-    --site-bg: #0f141b;
-    --site-bg-accent: radial-gradient(circle at 15% 10%, rgba(87, 174, 255, 0.14), transparent 45%), radial-gradient(circle at 85% 15%, rgba(72, 187, 120, 0.12), transparent 45%);
-    --site-text: #e6edf6;
-    --site-muted: #a5b5c8;
+    --site-bg: #070a0f;
+    --site-bg-accent: none;
+    --site-text: #e8edf4;
+    --site-muted: #9ca9b8;
     --site-link: #78b8ff;
     --site-link-hover: #a4d1ff;
-    --site-surface: #171e28;
-    --site-surface-alt: #111923;
-    --site-border: #2c3a4d;
-    --site-divider: #243243;
-    --site-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
-    --site-navbar-bg: #090d12;
+    --site-surface: #10151d;
+    --site-surface-alt: #0c1118;
+    --site-border: #263140;
+    --site-divider: #1f2936;
+    --site-shadow: 0 12px 28px rgba(0, 0, 0, 0.36);
+    --site-navbar-bg: #05070a;
     --site-navbar-border: rgba(255, 255, 255, 0.05);
     --site-navbar-text: #eef5ff;
     --site-navbar-link: #c8d7ea;
@@ -50,7 +50,7 @@ html[data-theme="dark"] {
 html[data-theme="beige"] {
     color-scheme: light;
     --site-bg: #f4eee5;
-    --site-bg-accent: radial-gradient(circle at 10% 10%, rgba(165, 120, 71, 0.08), transparent 44%), radial-gradient(circle at 90% 8%, rgba(96, 138, 120, 0.08), transparent 40%);
+    --site-bg-accent: none;
     --site-text: #3a312a;
     --site-muted: #75685b;
     --site-link: #7f4f2d;
@@ -73,8 +73,8 @@ html[data-theme="beige"] {
 
 html[data-theme="chaos"] {
     color-scheme: dark;
-    --site-bg: #130d2f;
-    --site-bg-accent: radial-gradient(circle at 14% 14%, rgba(255, 92, 156, 0.22), transparent 44%), radial-gradient(circle at 88% 12%, rgba(110, 243, 255, 0.24), transparent 43%), radial-gradient(circle at 55% 100%, rgba(255, 196, 74, 0.16), transparent 48%);
+    --site-bg: #140f24;
+    --site-bg-accent: linear-gradient(180deg, rgba(125, 246, 255, 0.04), transparent 22rem);
     --site-text: #f7f2ff;
     --site-muted: #c8b9ea;
     --site-link: #7df6ff;
@@ -257,6 +257,11 @@ svg.bi {
     text-decoration: underline;
 }
 
+.home-ipod-link {
+    text-decoration: underline;
+    text-underline-offset: 0.12em;
+}
+
 *:focus-visible {
     outline: 2px solid var(--site-focus);
     outline-offset: 2px;
@@ -281,6 +286,7 @@ svg.bi {
         height: 20rem;
         padding: 0.35rem;
     }
+
 }
 
 @media (min-width: 992px) {
